@@ -167,8 +167,21 @@
     <Compile Include="Migrations\201410150004096_MoneyCheck.Designer.cs">
       <DependentUpon>201410150004096_MoneyCheck.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412032336231_MoreData.cs" />
+    <Compile Include="Migrations\201412032336231_MoreData.Designer.cs">
+      <DependentUpon>201412032336231_MoreData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412040011262_Exspenses.cs" />
+    <Compile Include="Migrations\201412040011262_Exspenses.Designer.cs">
+      <DependentUpon>201412040011262_Exspenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412040024045_Exspenses1.cs" />
+    <Compile Include="Migrations\201412040024045_Exspenses1.Designer.cs">
+      <DependentUpon>201412040024045_Exspenses1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ExpenseModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -238,6 +251,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201410150004096_MoneyCheck.resx">
       <DependentUpon>201410150004096_MoneyCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412032336231_MoreData.resx">
+      <DependentUpon>201412032336231_MoreData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412040011262_Exspenses.resx">
+      <DependentUpon>201412040011262_Exspenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412040024045_Exspenses1.resx">
+      <DependentUpon>201412040024045_Exspenses1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

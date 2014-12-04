@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace TDC.Models
 {
@@ -11,6 +13,22 @@ namespace TDC.Models
     {
         public decimal Money { get; set; }
         public DateTime checkIn { get; set; }
+
+        // 1 = easy 2 = intermediate  3 = advanced
+        public int level { get; set; }
+
+        // 1 = Young Professional 2 = High School Student 3 = College Student
+        public int type { get; set; }
+
+        // 1 = Male 2 = Female 3  = Other
+        public int? sex { get; set;}
+
+        //True = participated last year, False = did not
+        public bool again { get; set; }
+
+        public virtual ICollection<Expense> Expense { get; set; }
+
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
