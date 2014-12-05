@@ -31,6 +31,80 @@
     </div>
 
     <div class="form-group">
+        @Html.LabelFor(m => m.Zip, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Zip, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Affil, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Affil, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Zip, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Zip, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.again, new { @class = "col-md-1 control-label" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.again, new { @class = "form-control" })
+        </div>
+    </div>
+        <div class="form-group">
+        @Html.LabelFor(m => m.ParticipantOrOrgan, new { @class = "col-md-1 control-label" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.ParticipantOrOrgan, new { @class = "form-control" })
+        </div>
+    </div>
+
+    //Dropdown for sex
+    <div class="form-group">
+        @Html.LabelFor(m => m.sex, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+           @Html.DropDownListFor(m => m.sex, new List<SelectListItem>
+      {
+          new SelectListItem {Text = "Male", Value = "1"},
+          new SelectListItem {Text = "Female", Value = "2"},
+          new SelectListItem {Text = "Other", Value = "3"}
+          
+          
+      }, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.type, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.type, new List<SelectListItem>
+      {
+          new SelectListItem {Text = "Young Professional", Value = "1"},
+          new SelectListItem {Text = "High School Student", Value = "2"},
+          new SelectListItem {Text = "College Student", Value = "3"}
+
+
+      }, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.level, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.level, new List<SelectListItem>
+      {
+          new SelectListItem {Text = "Beginner", Value = "1"},
+          new SelectListItem {Text = "Intermediate", Value = "2"},
+          new SelectListItem {Text = "Advanced", Value = "3"}
+
+
+      }, new { @class = "form-control" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />
         </div>

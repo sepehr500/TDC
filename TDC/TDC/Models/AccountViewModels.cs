@@ -68,6 +68,36 @@ namespace TDC.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        // 1 = easy 2 = intermediate  3 = advanced
+        [Display(Name="Select Difficulty")]
+
+        public int level { get; set; }
+
+        // 1 = Young Professional 2 = High School Student 3 = College Student
+        [Display(Name="What type of participant are you?")]
+        public int type { get; set; }
+
+        // 1 = Male 2 = Female 3  = Other
+        [Display(Name = "What is your gender?")]
+        public int? sex { get; set; }
+
+        //True = participated last year, False = did not
+        [Display(Name = "Did you participate last year?")]
+        public bool again { get; set; }
+
+        //True = Participant, False = Organizer
+
+        [Display(Name="Are you are an organizer?")]
+        public bool ParticipantOrOrgan { get; set; }
+        //Zipcode
+        [DataType(DataType.PostalCode)]
+        [Display(Name = "Zipcode")]
+        public int Zip { get; set; }
+
+        //Organization user is affiliated with
+        [Display(Name = "Enter group affiliation")]
+        public string Affil { get; set; }
     }
 
     public class ResetPasswordViewModel

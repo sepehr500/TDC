@@ -90,7 +90,7 @@ namespace TDC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Money = 2, checkIn = DateTime.Now };
+                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Money = 2, checkIn = DateTime.Now, sex = model.sex };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
