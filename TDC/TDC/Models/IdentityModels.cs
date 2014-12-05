@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace TDC.Models
 {
@@ -24,14 +25,19 @@ namespace TDC.Models
         public int? sex { get; set;}
 
         //True = participated last year, False = did not
+        [Display(Name = "Did you participate last year?")]
         public bool again { get; set; }
 
         //True = Participant, False = Organizer
+        
         public bool ParticipantOrOrgan { get; set; }
         //Zipcode
+        [DataType(DataType.PostalCode)]
+        [Display(Name = "Zipcode")]
         public int Zip { get; set; }
 
         //Organization user is affiliated with
+        [Display(Name = "Enter group affiliation")]
         public string Affil { get; set; }
         public virtual ICollection<Expense> Expense { get; set; }
 
