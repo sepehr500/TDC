@@ -35,6 +35,10 @@ namespace TDC.Models
         public string Affil { get; set; }
         public virtual ICollection<Expense> Expense { get; set; }
 
+        public virtual ICollection<Income> Income { get; set; }
+
+        public virtual ICollection<Reflection> Reflection { get; set; }
+
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

@@ -187,10 +187,20 @@
     <Compile Include="Migrations\201412051712147_ZipandOrgan1.Designer.cs">
       <DependentUpon>201412051712147_ZipandOrgan1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412052125143_IncomeAdd.cs" />
+    <Compile Include="Migrations\201412052125143_IncomeAdd.Designer.cs">
+      <DependentUpon>201412052125143_IncomeAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412052138176_Reflection.cs" />
+    <Compile Include="Migrations\201412052138176_Reflection.Designer.cs">
+      <DependentUpon>201412052138176_Reflection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ExpenseModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IncomeModels.cs" />
+    <Compile Include="Models\ReflectionModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -274,6 +284,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412051712147_ZipandOrgan1.resx">
       <DependentUpon>201412051712147_ZipandOrgan1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412052125143_IncomeAdd.resx">
+      <DependentUpon>201412052125143_IncomeAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412052138176_Reflection.resx">
+      <DependentUpon>201412052138176_Reflection.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
