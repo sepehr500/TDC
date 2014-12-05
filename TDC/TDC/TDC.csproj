@@ -179,6 +179,10 @@
     <Compile Include="Migrations\201412040024045_Exspenses1.Designer.cs">
       <DependentUpon>201412040024045_Exspenses1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412051709115_ZipandOrgan.cs" />
+    <Compile Include="Migrations\201412051709115_ZipandOrgan.Designer.cs">
+      <DependentUpon>201412051709115_ZipandOrgan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ExpenseModels.cs" />
@@ -260,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412040024045_Exspenses1.resx">
       <DependentUpon>201412040024045_Exspenses1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412051709115_ZipandOrgan.resx">
+      <DependentUpon>201412051709115_ZipandOrgan.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

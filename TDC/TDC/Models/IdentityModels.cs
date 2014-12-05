@@ -26,6 +26,10 @@ namespace TDC.Models
         //True = participated last year, False = did not
         public bool again { get; set; }
 
+        //True = Participant, False = Organizer
+        public bool ParticipantOrOrgan { get; set; }
+        //Zipcode
+        public int Zip { get; set; }
         public virtual ICollection<Expense> Expense { get; set; }
 
 
