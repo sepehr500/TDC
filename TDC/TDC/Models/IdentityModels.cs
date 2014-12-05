@@ -30,9 +30,6 @@ namespace TDC.Models
         public bool ParticipantOrOrgan { get; set; }
         //Zipcode
         public int Zip { get; set; }
-
-        //Organization user is affiliated with
-        public string Affil { get; set; }
         public virtual ICollection<Expense> Expense { get; set; }
 
 
