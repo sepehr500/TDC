@@ -195,12 +195,18 @@
     <Compile Include="Migrations\201412052138176_Reflection.Designer.cs">
       <DependentUpon>201412052138176_Reflection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412061707074_ShockUser.cs" />
+    <Compile Include="Migrations\201412061707074_ShockUser.Designer.cs">
+      <DependentUpon>201412061707074_ShockUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ExpenseModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IncomeModels.cs" />
     <Compile Include="Models\ReflectionModels.cs" />
+    <Compile Include="Models\ShockLUModels.cs" />
+    <Compile Include="Models\ShockUserModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -290,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412052138176_Reflection.resx">
       <DependentUpon>201412052138176_Reflection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412061707074_ShockUser.resx">
+      <DependentUpon>201412061707074_ShockUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
