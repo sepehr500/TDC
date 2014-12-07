@@ -9,7 +9,7 @@ namespace TDC.Models
     {
         public int ID { get; set; }
 
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual User User { get; set; }
 
         public virtual ShockLU ShockLU { get; set; }
 

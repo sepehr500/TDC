@@ -199,6 +199,22 @@
     <Compile Include="Migrations\201412061707074_ShockUser.Designer.cs">
       <DependentUpon>201412061707074_ShockUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412062138336_TestAppId.cs" />
+    <Compile Include="Migrations\201412062138336_TestAppId.Designer.cs">
+      <DependentUpon>201412062138336_TestAppId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412062249245_TestReflect.cs" />
+    <Compile Include="Migrations\201412062249245_TestReflect.Designer.cs">
+      <DependentUpon>201412062249245_TestReflect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412062303147_Retry2.cs" />
+    <Compile Include="Migrations\201412062303147_Retry2.Designer.cs">
+      <DependentUpon>201412062303147_Retry2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412062320197_retry3.cs" />
+    <Compile Include="Migrations\201412062320197_retry3.Designer.cs">
+      <DependentUpon>201412062320197_retry3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ExpenseModels.cs" />
@@ -299,6 +315,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412061707074_ShockUser.resx">
       <DependentUpon>201412061707074_ShockUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412062138336_TestAppId.resx">
+      <DependentUpon>201412062138336_TestAppId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412062249245_TestReflect.resx">
+      <DependentUpon>201412062249245_TestReflect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412062303147_Retry2.resx">
+      <DependentUpon>201412062303147_Retry2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412062320197_retry3.resx">
+      <DependentUpon>201412062320197_retry3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

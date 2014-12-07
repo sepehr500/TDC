@@ -13,9 +13,9 @@ namespace TDC.Models
 
         public decimal cost { get; set; }
 
-        //public int ApplicationUserID { get; set; }
-
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public int UserID { get; set; }
+        
+        public virtual User User { get; set; }
 
         
     }
