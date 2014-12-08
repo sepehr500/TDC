@@ -2,27 +2,34 @@
     ViewBag.Title = "Home Page";
 }
 
-
-@if (ViewBag.requiresLogin == true)
-{
-        
-
-        
-
-
-
-
-}
-else
-{
-
-
-
-
-
-
-
-        
-
-}
+<div class="container">
+    <div class="jumbotron" style="text-align: center">
+        <h1>You have $1 dollar.</h1>
+    </div>
+    <div class="col-xs-6 col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-body">  
+                <div class="col-xs-9 col-sm-6">
+                    <button class="btn-primary" type="button">Add Expense</button>
+                </div>           
+                <div class="col-xs-9 col-sm-6">
+                    <button class="btn-primary blog" type="button" style="background-color: #0094ff">Review Logs</button>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-8">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                Test
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                Test
+            </div>
+        </div>
+    </div>
+</div>
 
