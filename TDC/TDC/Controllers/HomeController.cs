@@ -21,11 +21,11 @@ namespace TDC.Controllers
         {
             if (User.Identity.IsAuthenticated == true)
             {
-                ViewBag.requiresLogin = false;
+                return View();
             }
-            else ViewBag.requiresLogin = true;
+            else return RedirectToAction("Splash", "Home");
             
-            return View();
+          
         }
 
         public ActionResult About()
@@ -41,6 +41,10 @@ namespace TDC.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+        public ActionResult Splash()
+        {
             return View();
         }
     }

@@ -216,15 +216,17 @@
     <Compile Include="Migrations\201412062320197_retry3.Designer.cs">
       <DependentUpon>201412062320197_retry3.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Migrations\201412080421504_TestSomething.cs" />
     <Compile Include="Migrations\201412080421504_TestSomething.Designer.cs">
       <DependentUpon>201412080421504_TestSomething.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Migrations\201412080424145_IdChange.cs" />
     <Compile Include="Migrations\201412080424145_IdChange.Designer.cs">
       <DependentUpon>201412080424145_IdChange.cs</DependentUpon>
-
+    </Compile>
+    <Compile Include="Migrations\201412080556584_TestSomething1.cs" />
+    <Compile Include="Migrations\201412080556584_TestSomething1.Designer.cs">
+      <DependentUpon>201412080556584_TestSomething1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -317,6 +319,7 @@
     <Content Include="Views\Expenses\Details.cshtml" />
     <Content Include="Views\Expenses\Edit.cshtml" />
     <Content Include="Views\Expenses\Index.cshtml" />
+    <Content Include="Views\Home\Splash.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -368,13 +371,14 @@
     <EmbeddedResource Include="Migrations\201412062320197_retry3.resx">
       <DependentUpon>201412062320197_retry3.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="Migrations\201412080421504_TestSomething.resx">
       <DependentUpon>201412080421504_TestSomething.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412080424145_IdChange.resx">
       <DependentUpon>201412080424145_IdChange.cs</DependentUpon>
-
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412080556584_TestSomething1.resx">
+      <DependentUpon>201412080556584_TestSomething1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
