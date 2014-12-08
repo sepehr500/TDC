@@ -75,6 +75,9 @@ namespace TDC.Models
         public System.Data.Entity.DbSet<TDC.Models.Income> Incomes { get; set; }
 
         public System.Data.Entity.DbSet<TDC.Models.Expense> Expenses { get; set; }
+        public System.Data.Entity.DbSet<TDC.Models.ShockLU> ShockLU { get; set; }
+        public System.Data.Entity.DbSet<TDC.Models.ShockUser> ShockUser { get; set; }
+        
        
     }
 }
