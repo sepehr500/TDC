@@ -216,15 +216,15 @@
     <Compile Include="Migrations\201412062320197_retry3.Designer.cs">
       <DependentUpon>201412062320197_retry3.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
+
     <Compile Include="Migrations\201412080421504_TestSomething.cs" />
     <Compile Include="Migrations\201412080421504_TestSomething.Designer.cs">
       <DependentUpon>201412080421504_TestSomething.cs</DependentUpon>
-=======
+	</Compile>
     <Compile Include="Migrations\201412080424145_IdChange.cs" />
     <Compile Include="Migrations\201412080424145_IdChange.Designer.cs">
       <DependentUpon>201412080424145_IdChange.cs</DependentUpon>
->>>>>>> origin/master
+
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -368,13 +368,13 @@
     <EmbeddedResource Include="Migrations\201412062320197_retry3.resx">
       <DependentUpon>201412062320197_retry3.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
+
     <EmbeddedResource Include="Migrations\201412080421504_TestSomething.resx">
       <DependentUpon>201412080421504_TestSomething.cs</DependentUpon>
-=======
+	</EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412080424145_IdChange.resx">
       <DependentUpon>201412080424145_IdChange.cs</DependentUpon>
->>>>>>> origin/master
+
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
