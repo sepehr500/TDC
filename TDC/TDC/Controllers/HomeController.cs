@@ -19,6 +19,11 @@ namespace TDC.Controllers
 
         public ActionResult Index()
         {
+            if (User.Identity.IsAuthenticated == true)
+            {
+                ViewBag.requiresLogin = false;
+            }
+            else ViewBag.requiresLogin = true;
             
             return View();
         }
