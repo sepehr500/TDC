@@ -73,6 +73,8 @@ namespace TDC.Models
         public System.Data.Entity.DbSet<TDC.Models.Reflection> Reflections { get; set; }
 
         public System.Data.Entity.DbSet<TDC.Models.Income> Incomes { get; set; }
+
+        public System.Data.Entity.DbSet<TDC.Models.Expense> Expenses { get; set; }
        
     }
 }
