@@ -9,13 +9,12 @@ using TDC.Models;
 
 namespace TDC.Tools
 {
-    public static class UserActions 
+    public class UserActions 
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
         //use this to get current user
         public static User getUser(string id)
         {
-            
+           ApplicationDbContext db = new ApplicationDbContext(); 
             var ApplicationDbContext = new ApplicationDbContext();
             var UserManager = new UserManager<User>(new UserStore<User>(ApplicationDbContext));
             var user = UserManager.FindById(id);
@@ -26,6 +25,7 @@ namespace TDC.Tools
         //Returns number of people on each team
         public int teamCount(User user)
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             //only converts all to lowercase
             string teamName = user.Affil.ToLower();
             var list = db.Users.Where(x => x.Affil.ToLower().Contains(teamName));

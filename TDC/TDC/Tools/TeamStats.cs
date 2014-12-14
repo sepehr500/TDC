@@ -6,7 +6,7 @@ using TDC.Models;
 
 namespace TDC.Tools
 {
-    public static class TeamStats
+    public class TeamStats
     {
         protected ApplicationDbContext db = new ApplicationDbContext();
         //returns team Money Totals. To be orderd later
