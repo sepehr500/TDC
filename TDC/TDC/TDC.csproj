@@ -232,6 +232,14 @@
     <Compile Include="Migrations\201412081656291_IdUpdate.Designer.cs">
       <DependentUpon>201412081656291_IdUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412141848213_Inter.cs" />
+    <Compile Include="Migrations\201412141848213_Inter.Designer.cs">
+      <DependentUpon>201412141848213_Inter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412141916232_addDate.cs" />
+    <Compile Include="Migrations\201412141916232_addDate.Designer.cs">
+      <DependentUpon>201412141916232_addDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ExpenseModels.cs" />
@@ -387,6 +395,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412081656291_IdUpdate.resx">
       <DependentUpon>201412081656291_IdUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412141848213_Inter.resx">
+      <DependentUpon>201412141848213_Inter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412141916232_addDate.resx">
+      <DependentUpon>201412141916232_addDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

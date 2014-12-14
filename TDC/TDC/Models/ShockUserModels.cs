@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TDC.Tools;
 
 namespace TDC.Models
 {
-    public class ShockUser
+    public class ShockUser : IFundControl
     {
         public int ID { get; set; }
 
@@ -19,6 +20,20 @@ namespace TDC.Models
 
         public DateTime Date { get; set; }
 
-        
+
+        public decimal getAmt()
+        {
+            return ShockLU.Amount;
+        }
+
+        public string getType()
+        {
+            return "Shock";
+        }
+
+        public DateTime getDate()
+        {
+            return Date;
+        }
     }
 }

@@ -21,12 +21,13 @@ namespace TDC.Tools
         
         public static ShockLU doIndShock(string id)
         {
-            
+            //get user id
             ApplicationDbContext db = new ApplicationDbContext();  
             var user = UserActions.getUser(id);
             
             
             DateTime startDate = user.checkIn;
+            //seed will always be consistent
             Random rnd = new Random((int)startDate.Ticks);
             int randHours = rnd.Next(12,30);
             DateTime checkTime = startDate.AddHours(randHours);
@@ -47,6 +48,7 @@ namespace TDC.Tools
 
         }
 
+        //Dont think I will implement this. There are only 2 or 3 global shocks, so might make sense to write manually. 
         public static void doGlobalShock(string id) 
         { 
         
@@ -59,7 +61,7 @@ namespace TDC.Tools
             ApplicationDbContext db = new ApplicationDbContext();
             var user = UserActions.getUser(id);
 
-            var randList = db.ShockLU.SqlQuery("SELECT TOP 1 column FROM table ORDER BY NEWID() ");
+            var randList = db.ShockLU.SqlQuery("SELECT TOP 1 column FROM ShockLUs ORDER BY NEWID() ");
             return randList.First();
             
         }
