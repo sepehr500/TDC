@@ -251,6 +251,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Tools\ShockCalc.cs" />
+    <Compile Include="Tools\TeamStats.cs" />
     <Compile Include="Tools\UserActions.cs" />
   </ItemGroup>
   <ItemGroup>

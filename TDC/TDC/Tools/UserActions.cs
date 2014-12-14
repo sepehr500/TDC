@@ -11,7 +11,7 @@ namespace TDC.Tools
 {
     public static class UserActions 
     {
-
+        private ApplicationDbContext db = new ApplicationDbContext();
         //use this to get current user
         public static User getUser(string id)
         {
@@ -22,30 +22,17 @@ namespace TDC.Tools
             return user;
         }
 
-        //Returns the users balance
-        //May be obsolete. Can simply sum the user Log
-        public static decimal getBalance(string id) {
-            decimal total = 0;
-            
-            var ApplicationDbContext = new ApplicationDbContext();
-            var UserManager = new UserManager<User>(new UserStore<User>(ApplicationDbContext));
-            var user = UserManager.FindById(id);
-            
-            foreach (Income x in user.Income )
-            {
-                total += x.Amount;
-            }
-            foreach (Expense x in user.Expense)
-            {
-                total += x.cost;
-            }
-            foreach (ShockUser x in user.ShockUser)
-            {
-                total += x.ShockLU.Amount;
-            }
-
-            return total;
         
+        //Returns number of people on each team
+        public int teamCount(User user)
+        {
+            //only converts all to lowercase
+            string teamName = user.Affil.ToLower();
+            var list = db.Users.Where(x => x.Affil.ToLower().Contains(teamName));
+            return list.Count();
+
+
+
         }
 
         //Returns a List of IFundControl that can be used to get funds. Log.Sum(x => x.getAmt()) to get sum of log. 

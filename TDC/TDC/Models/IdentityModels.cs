@@ -48,7 +48,32 @@ namespace TDC.Models
 
         public virtual ICollection<ShockUser> ShockUser { get; set; }
 
+        //Returns the users balance
+        
+        public decimal getBalance()
+        {
+            decimal total = 0;
 
+            var ApplicationDbContext = new ApplicationDbContext();
+            var UserManager = new UserManager<User>(new UserStore<User>(ApplicationDbContext));
+            
+
+            foreach (Income x in this.Income)
+            {
+                total += x.Amount;
+            }
+            foreach (Expense x in this.Expense)
+            {
+                total += x.cost;
+            }
+            foreach (ShockUser x in this.ShockUser)
+            {
+                total += x.ShockLU.Amount;
+            }
+
+            return total;
+
+        }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -56,6 +81,9 @@ namespace TDC.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<User>
