@@ -21,7 +21,9 @@ namespace TDC.Controllers
         {
             if (User.Identity.IsAuthenticated == true)
             {
-                return View();
+                var user = UserActions.getUser(User.Identity.GetUserId());
+
+                return View(user);
             }
             else return RedirectToAction("Splash", "Home");
             

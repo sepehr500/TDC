@@ -1,4 +1,8 @@
-﻿@{
+﻿@using TDC.Models
+@model TDC.Models.User
+@{
+
+    
     ViewBag.Title = "Home Page";
 }
 
@@ -43,9 +47,8 @@
 
     <!-- Top of Page -->
     <div class="jumbotron" style="text-align: center; background-color:#0094ff;">
-        <h1 style="color:#FFFFFF">You have $1.</h1>
+        <h1 style="color:#FFFFFF">You have $@Model.getBalance() </h1>
     </div>
-    
     <div class="row">
         <div class="">
             <div class="panel panel-default">
