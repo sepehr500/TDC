@@ -32,25 +32,32 @@ namespace TDC.Tools
             ApplicationDbContext db = new ApplicationDbContext();
             var tempTuple = new StatsTuple();
             var list = new List<StatsTuple>();
+            var copy = db.Expenses.ToList();
+            decimal sum = 0;
             foreach (var x in db.Expenses)
             {
-                if (!list.Exists(z => z.teamName.ToLower() == x.product.ToLower()))
+                if ( list.Exists(p => p.teamName == x.product )  == false)
                 {
-                    tempTuple.teamName = x.product;
+                  //   tempTuple.teamName = x.product;
                   // var tempList = db.Expenses.Where(z => z.product.ToLower() == x.product.ToLower()).Select(z => z.cost).ToList();
-                    var query = from z in db.Expenses where z.product.ToLower() == x.product.ToLower() select z;
-
-                    foreach (var item in query)
+                  //  var query = from z in db.Expenses where z.product.ToLower() == x.product.ToLower() select z;
+                    
+                    foreach (var item in copy)
                     {
-                        tempTuple.amt += item.cost;
+
+                        if (item.product.ToLower() == x.product.ToLower())
+                        {
+                            sum += item.cost;
+                        }
+                        
                     }
                     //tempTuple.amt = tempList.Sum(k => k.cost);
-                   list.Add(tempTuple);
+                    list.Add(new StatsTuple() {amt = sum * -1 , teamName = x.product });
 
-                   
+                    sum = 0;
                 }
             }
-            return null;
+            return list;
         }
 
         //list of total number of people on each team
