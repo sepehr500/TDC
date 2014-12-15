@@ -59,7 +59,7 @@ namespace TDC.Controllers
                 expense.Date = DateTime.Now;
                 db.Expenses.Add(expense);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(expense);

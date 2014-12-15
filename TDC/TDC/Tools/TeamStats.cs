@@ -37,8 +37,12 @@ namespace TDC.Tools
                 if (!list.Exists(z => z.teamName.ToLower() == x.product.ToLower()))
                 {
                     tempTuple.teamName = x.product;
-                   var tempList = db.Expenses.Where(z => z.product == x.product);
-                   tempTuple.amt = tempList.Sum(k => k.cost);
+                   var tempList = db.Expenses.Where(z => z.product.ToLower() == x.product.ToLower());
+                   foreach (var item in tempList)
+                   {
+                       tempTuple.amt += item.cost;
+                   }
+                   //tempTuple.amt = tempList.Sum(k => k.cost);
                    list.Add(tempTuple);
 
                    
