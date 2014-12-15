@@ -6,6 +6,42 @@
     
     ViewBag.Title = "Home Page";
 }
+
+
+<div class="container">
+    <!-- Add Expense Modal -->
+    
+
+    <!-- Top of Page -->
+    <div class="jumbotron" style="text-align: center; background-color:#0094ff;">
+        <h1 style="color:#FFFFFF">You have $@Model.getBalance() </h1>
+    </div>
+    <div class="row">
+        <div class="">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-xs-6 col-xs-push-0">
+                        <form>                              
+                            <a href="#" data-target="#modalExpense" data-toggle="modal" class="btn btn-default btn-lg btn-block btn-danger"><span class="glyphicon glyphicon-plus"></span> Expense</a>
+                        </form>
+                    </div>
+                    <div class="col-xs-6 ">
+                        <a href="#" data-target="#modalLog" data-toggle="modal" class="btn btn-default btn-lg btn-block btn-info"><span class="glyphicon glyphicon-th-list"></span> Log</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="col-xs-12 col-sm-8 col-sm-push-2 col-lg-6 col-lg-push-3">
+                <a class="twitter-timeline" href="https://twitter.com/tdchallenge" data-widget-id="544296033954840576">Tweets by @@tdchallenge</a>
+                <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal" id="modalExpense">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -78,38 +114,3 @@
         </div>
     </div>
 </div>
-
-<div class="container">
-    <!-- Add Expense Modal -->
-    
-
-    <!-- Top of Page -->
-    <div class="jumbotron" style="text-align: center; background-color:#0094ff;">
-        <h1 style="color:#FFFFFF">You have $@Model.getBalance() </h1>
-    </div>
-    <div class="row">
-        <div class="">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="col-xs-6 col-xs-push-0">
-                        <form>                              
-                            <a href="#" data-target="#modalExpense" data-toggle="modal" class="btn btn-default btn-lg btn-block btn-danger"><span class="glyphicon glyphicon-plus"></span> Expense</a>
-                        </form>
-                    </div>
-                    <div class="col-xs-6 ">
-                        <a href="#" data-target="#modalLog" data-toggle="modal" class="btn btn-default btn-lg btn-block btn-info"><span class="glyphicon glyphicon-th-list"></span> Log</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="container">
-            <div class="col-xs-12 col-sm-8 col-sm-push-2 col-lg-6 col-lg-push-3">
-                <a class="twitter-timeline" href="https://twitter.com/tdchallenge" data-widget-id="544296033954840576">Tweets by @@tdchallenge</a>
-                <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
-            </div>
-        </div>
-    </div>
-</div>
-
