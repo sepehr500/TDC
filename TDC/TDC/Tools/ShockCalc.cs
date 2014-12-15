@@ -19,6 +19,7 @@ namespace TDC.Tools
     public class ShockCalc
     {
         
+        //If null is returned then there is no shock, else a ShockLU object will be returned and that holds shock name and value
         public static ShockLU doIndShock(string id)
         {
             //get user id

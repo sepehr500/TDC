@@ -27,6 +27,7 @@ namespace TDC.Tools
         
         //Returns most popular items with amt spent total
         //Dont be confused by team name. It can be product name
+        //HAVING TROUBLE WITH CASE SENSITIVITY
         public static List<StatsTuple> getPopItem()
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -36,7 +37,7 @@ namespace TDC.Tools
             decimal sum = 0;
             foreach (var x in db.Expenses)
             {
-                if ( list.Exists(p => p.teamName == x.product )  == false)
+                if (list.Exists(p => p.teamName == x.product || p.teamName + "s" == x.product || p.teamName == x.product.Remove(x.product.Length - 1)) == false)
                 {
                   //   tempTuple.teamName = x.product;
                   // var tempList = db.Expenses.Where(z => z.product.ToLower() == x.product.ToLower()).Select(z => z.cost).ToList();
@@ -45,7 +46,7 @@ namespace TDC.Tools
                     foreach (var item in copy)
                     {
 
-                        if (item.product.ToLower() == x.product.ToLower())
+                        if (item.product.ToLower() == x.product.ToLower() || item.product.ToLower() + "s" == x.product.ToLower() || item.product.ToLower() == x.product.ToLower().Remove(x.product.Length - 1))
                         {
                             sum += item.cost;
                         }
