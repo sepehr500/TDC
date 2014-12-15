@@ -258,6 +258,7 @@
     <Content Include="Views\Expenses\Index.cshtml" />
     <Content Include="Views\Home\Splash.cshtml" />
     <Content Include="Views\Home\Stats.cshtml" />
+    <Content Include="Views\Home\createExspense.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
