@@ -54,7 +54,7 @@ namespace TDC.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                expense.cost = expense.cost * -1;
                 expense.UserID = User.Identity.GetUserId();
                 expense.Date = DateTime.Now;
                 db.Expenses.Add(expense);
