@@ -56,7 +56,6 @@ namespace TDC.Controllers
             {
                 
                 expense.UserID = User.Identity.GetUserId();
-                expense.Date = DateTime.Now;
                 db.Expenses.Add(expense);
                 db.SaveChanges();
                 return RedirectToAction("Index");

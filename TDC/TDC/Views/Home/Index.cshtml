@@ -1,5 +1,4 @@
 ﻿@using TDC.Models
-@using TDC.Tools
 @model TDC.Models.User
 @{
 
@@ -36,43 +35,7 @@
                     <h4 class="modal-title">Modal title</h4>
                 </div>
                 <div class="modal-body">
-                    
-                    <table class="table">
-                        <tr>
-                            <th width="100px">
-                                Date
-                            </th>
-                            <th width="100px">
-                                Type
-                            </th>
-                            <th width="100px">
-                                Amt
-                            </th>
-                        </tr>
-
-                        @{int i = 1;}
-                        @foreach (var x in UserActions.getLog(Model.Id))
-                        {
-                            <tr>
-                                <td>
-                                    @x.getDate()
-                                </td>
-                                <td>
-                                    @x.getType()
-                                </td>
-                                <td>
-                                    @x.getAmt()
-                                </td>
-                            </tr>
-                        }
-                    </table>
-
-
-
-
-
-
-
+                    <p>One fine body…</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
