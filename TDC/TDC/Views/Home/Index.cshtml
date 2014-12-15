@@ -45,7 +45,8 @@
 <div class="modal" id="modalExpense">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form onsubmit="shaniqua.cs">
+            @using (Html.BeginForm ("methodName", "controllerName")){
+            
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title">Add Expense</h4>
@@ -58,7 +59,7 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-danger">Add</button>
                 </div>
-            </form>
+            }
         </div>
     </div>
 </div>
