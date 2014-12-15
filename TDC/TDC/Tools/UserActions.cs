@@ -22,8 +22,8 @@ namespace TDC.Tools
         }
 
         
-        //Returns number of people on each team
-        public int teamCount(User user)
+        //Returns number of people on individual team
+        public static int teamCount(User user)
         {
             ApplicationDbContext db = new ApplicationDbContext();
             //only converts all to lowercase

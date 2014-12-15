@@ -61,9 +61,19 @@ namespace TDC.Tools
         }
 
         //list of total number of people on each team
-        public List<StatsTuple> getTotalTeam()
+        public static List<StatsTuple> getTotalTeam()
         {
-            return null;
+            ApplicationDbContext db = new ApplicationDbContext();
+            var list = new List<StatsTuple>();
+            foreach (var x in db.Users)
+            {
+                if (!list.Exists(z => z.teamName.ToLower() == x.Affil.ToLower()))
+                {
+                    list.Add(new StatsTuple { amt = UserActions.teamCount(x), teamName = x.Affil });
+                }
+            }
+            return list;
+
         }
         //get an individual team total
         public static StatsTuple getIndTeamTotal(User user)

@@ -54,6 +54,7 @@ namespace TDC.Controllers
         {
             ViewBag.teamMoney = TeamStats.getTeamMoney();
             ViewBag.teamTotal = TeamStats.getPopItem();
+            ViewBag.numOnTeams = TeamStats.getTotalTeam();
             return View();
         }
 
