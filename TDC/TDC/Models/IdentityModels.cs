@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using TDC.Tools;
 
 namespace TDC.Models
 {
@@ -52,21 +53,23 @@ namespace TDC.Models
         
         public decimal getBalance()
         {
+            
             decimal total = 0;
-
+            
+            var user = UserActions.getUser(this.Id);
             var ApplicationDbContext = new ApplicationDbContext();
             var UserManager = new UserManager<User>(new UserStore<User>(ApplicationDbContext));
             
 
-            foreach (Income x in this.Income)
+            foreach (Income x in user.Income)
             {
                 total += x.Amount;
             }
-            foreach (Expense x in this.Expense)
+            foreach (Expense x in user.Expense)
             {
                 total += x.cost;
             }
-            foreach (ShockUser x in this.ShockUser)
+            foreach (ShockUser x in user.ShockUser)
             {
                 total += x.ShockLU.Amount;
             }

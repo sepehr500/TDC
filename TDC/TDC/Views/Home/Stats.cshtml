@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Stats";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Global Stats</h2>
+
+<table class="table">
+    <tr>
+        <th width="100px">
+            Number
+        </th>
+        <th width="100px">
+            Team
+        </th>
+        <th width="100px">
+            Total
+        </th>
+    </tr>
+
+    @{int i = 1;}
+    @foreach (var x in ViewBag.teamMoney)
+    {
+        <tr>
+        <td>
+            @i
+        </td>
+        <td>
+            @x.teamName
+        </td>
+        <td>
+            @x.amt
+        </td>
+    </tr>
+    }
+    </table>

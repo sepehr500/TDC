@@ -47,5 +47,12 @@ namespace TDC.Controllers
         {
             return View();
         }
+
+        public ActionResult Stats()
+        {
+            ViewBag.teamMoney = TeamStats.getTeamMoney();
+            ViewBag.teamTotal = TeamStats.getPopItem();
+            return View();
+        }
     }
 }

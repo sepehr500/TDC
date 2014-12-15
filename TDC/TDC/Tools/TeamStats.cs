@@ -10,8 +10,9 @@ namespace TDC.Tools
     {
         protected ApplicationDbContext db = new ApplicationDbContext();
         //returns team Money Totals. To be orderd later
-        public List<StatsTuple> getTeamMoney() 
+        public static List<StatsTuple> getTeamMoney() 
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             var list = new List<StatsTuple>();
             foreach (var x in db.Users)
             {
@@ -25,9 +26,10 @@ namespace TDC.Tools
 
         
         //Returns most popular items with amt spent total
-        //dont be confused by team name. It can be product name
-        public List<StatsTuple> getPopItem()
+        //Dont be confused by team name. It can be product name
+        public static List<StatsTuple> getPopItem()
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             var tempTuple = new StatsTuple();
             var list = new List<StatsTuple>();
             foreach (var x in db.Expenses)
@@ -57,9 +59,12 @@ namespace TDC.Tools
             var team = new StatsTuple();
             //only converts all to lowercase
             string teamName = user.Affil.ToLower();
-            var list = db.Users.Where(x => x.Affil.ToLower().Contains(teamName));
+            var list = db.Users.Where(x => x.Affil.ToLower() == teamName);
             team.teamName = user.Affil;
-            team.amt = list.Sum(x => x.getBalance());
+            foreach (var item in list)
+            {
+                team.amt += item.getBalance();
+            }
             return team;
             
 
