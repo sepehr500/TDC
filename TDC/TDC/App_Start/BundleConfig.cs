@@ -21,20 +21,12 @@ namespace TDC
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js",
-                      "~/Scripts/wow.min.js",
-                      "~/Scripts/main.js",
-                      "~/Scripts/html5shiv.js"));
+                      "~/Scripts/respond.js"
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/font-awesome.css",
-                      "~/Content/main.css",
-                      "~/Content/prettyPhoto.css",
-                      "~/Content/response.css",
-                      "~/Content/animate.min.css",
-                      "~/Content/font-awesome.min.css"));
+                      "~/Content/Site.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
