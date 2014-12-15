@@ -24,9 +24,24 @@ namespace TDC.Tools
         }
 
         
-        //Returns most popular items with amt spent totoal
+        //Returns most popular items with amt spent total
+        //dont be confused by team name. It can be product name
         public List<StatsTuple> getPopItem()
         {
+            var tempTuple = new StatsTuple();
+            var list = new List<StatsTuple>();
+            foreach (var x in db.Expenses)
+            {
+                if (!list.Exists(z => z.teamName.ToLower() == x.product.ToLower()))
+                {
+                    tempTuple.teamName = x.product;
+                   var tempList = db.Expenses.Where(z => z.product == x.product);
+                   tempTuple.amt = tempList.Sum(k => k.cost);
+                   list.Add(tempTuple);
+
+                   
+                }
+            }
             return null;
         }
 
