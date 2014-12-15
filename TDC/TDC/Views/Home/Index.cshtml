@@ -50,7 +50,8 @@
                 <h4 class="modal-title">Add Expense</h4>
             </div>
             <div class="modal-body">
-                <label>Expense: $ <input type="number" id="addExpenseValue" /></label>
+                @Html.Partial("~/Views/Expenses/Create.cshtml", new TDC.Models.Expense())
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
