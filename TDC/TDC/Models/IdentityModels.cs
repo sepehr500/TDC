@@ -69,6 +69,7 @@ namespace TDC.Models
             {
                 total += x.cost;
             }
+
             foreach (ShockUser x in user.ShockUser)
             {
                 total += x.ShockLU.Amount;

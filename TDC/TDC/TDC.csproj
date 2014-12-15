@@ -164,77 +164,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201410150004096_MoneyCheck.cs" />
-    <Compile Include="Migrations\201410150004096_MoneyCheck.Designer.cs">
-      <DependentUpon>201410150004096_MoneyCheck.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412032336231_MoreData.cs" />
-    <Compile Include="Migrations\201412032336231_MoreData.Designer.cs">
-      <DependentUpon>201412032336231_MoreData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412040011262_Exspenses.cs" />
-    <Compile Include="Migrations\201412040011262_Exspenses.Designer.cs">
-      <DependentUpon>201412040011262_Exspenses.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412040024045_Exspenses1.cs" />
-    <Compile Include="Migrations\201412040024045_Exspenses1.Designer.cs">
-      <DependentUpon>201412040024045_Exspenses1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412051709115_ZipandOrgan.cs" />
-    <Compile Include="Migrations\201412051709115_ZipandOrgan.Designer.cs">
-      <DependentUpon>201412051709115_ZipandOrgan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412051712147_ZipandOrgan1.cs" />
-    <Compile Include="Migrations\201412051712147_ZipandOrgan1.Designer.cs">
-      <DependentUpon>201412051712147_ZipandOrgan1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412052125143_IncomeAdd.cs" />
-    <Compile Include="Migrations\201412052125143_IncomeAdd.Designer.cs">
-      <DependentUpon>201412052125143_IncomeAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412052138176_Reflection.cs" />
-    <Compile Include="Migrations\201412052138176_Reflection.Designer.cs">
-      <DependentUpon>201412052138176_Reflection.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412061707074_ShockUser.cs" />
-    <Compile Include="Migrations\201412061707074_ShockUser.Designer.cs">
-      <DependentUpon>201412061707074_ShockUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412062138336_TestAppId.cs" />
-    <Compile Include="Migrations\201412062138336_TestAppId.Designer.cs">
-      <DependentUpon>201412062138336_TestAppId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412062249245_TestReflect.cs" />
-    <Compile Include="Migrations\201412062249245_TestReflect.Designer.cs">
-      <DependentUpon>201412062249245_TestReflect.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412062303147_Retry2.cs" />
-    <Compile Include="Migrations\201412062303147_Retry2.Designer.cs">
-      <DependentUpon>201412062303147_Retry2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412062320197_retry3.cs" />
-    <Compile Include="Migrations\201412062320197_retry3.Designer.cs">
-      <DependentUpon>201412062320197_retry3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412080421504_TestSomething.cs" />
-    <Compile Include="Migrations\201412080421504_TestSomething.Designer.cs">
-      <DependentUpon>201412080421504_TestSomething.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412080424145_IdChange.cs" />
-    <Compile Include="Migrations\201412080424145_IdChange.Designer.cs">
-      <DependentUpon>201412080424145_IdChange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412080556584_TestSomething1.cs" />
-    <Compile Include="Migrations\201412080556584_TestSomething1.Designer.cs">
-      <DependentUpon>201412080556584_TestSomething1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412141848213_Inter.cs" />
-    <Compile Include="Migrations\201412141848213_Inter.Designer.cs">
-      <DependentUpon>201412141848213_Inter.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412141916232_addDate.cs" />
-    <Compile Include="Migrations\201412141916232_addDate.Designer.cs">
-      <DependentUpon>201412141916232_addDate.cs</DependentUpon>
+    <Compile Include="Migrations\201412150326134_UBER.cs" />
+    <Compile Include="Migrations\201412150326134_UBER.Designer.cs">
+      <DependentUpon>201412150326134_UBER.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201412150241405_another.cs" />
     <Compile Include="Migrations\201412150241405_another.Designer.cs">
@@ -338,59 +270,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201410150004096_MoneyCheck.resx">
-      <DependentUpon>201410150004096_MoneyCheck.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412032336231_MoreData.resx">
-      <DependentUpon>201412032336231_MoreData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412040011262_Exspenses.resx">
-      <DependentUpon>201412040011262_Exspenses.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412040024045_Exspenses1.resx">
-      <DependentUpon>201412040024045_Exspenses1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412051709115_ZipandOrgan.resx">
-      <DependentUpon>201412051709115_ZipandOrgan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412051712147_ZipandOrgan1.resx">
-      <DependentUpon>201412051712147_ZipandOrgan1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412052125143_IncomeAdd.resx">
-      <DependentUpon>201412052125143_IncomeAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412052138176_Reflection.resx">
-      <DependentUpon>201412052138176_Reflection.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412061707074_ShockUser.resx">
-      <DependentUpon>201412061707074_ShockUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412062138336_TestAppId.resx">
-      <DependentUpon>201412062138336_TestAppId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412062249245_TestReflect.resx">
-      <DependentUpon>201412062249245_TestReflect.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412062303147_Retry2.resx">
-      <DependentUpon>201412062303147_Retry2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412062320197_retry3.resx">
-      <DependentUpon>201412062320197_retry3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412080421504_TestSomething.resx">
-      <DependentUpon>201412080421504_TestSomething.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412080424145_IdChange.resx">
-      <DependentUpon>201412080424145_IdChange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412080556584_TestSomething1.resx">
-      <DependentUpon>201412080556584_TestSomething1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412141848213_Inter.resx">
-      <DependentUpon>201412141848213_Inter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412141916232_addDate.resx">
-      <DependentUpon>201412141916232_addDate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201412150326134_UBER.resx">
+      <DependentUpon>201412150326134_UBER.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412150241405_another.resx">
       <DependentUpon>201412150241405_another.cs</DependentUpon>

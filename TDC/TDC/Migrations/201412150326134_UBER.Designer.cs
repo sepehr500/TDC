@@ -7,13 +7,13 @@ namespace TDC.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class addDate : IMigrationMetadata
+    public sealed partial class UBER : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addDate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(UBER));
         
         string IMigrationMetadata.Id
         {
-            get { return "201412141916232_addDate"; }
+            get { return "201412150326134_UBER"; }
         }
         
         string IMigrationMetadata.Source
