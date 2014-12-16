@@ -32,12 +32,16 @@ namespace TDC.Tools
         {
             ApplicationDbContext db = new ApplicationDbContext();
             var tempTuple = new StatsTuple();
+            var tempTuple2 = new StatsTuple();
+            
             var list = new List<StatsTuple>();
             var copy = db.Expenses.ToList();
             decimal sum = 0;
             foreach (var x in db.Expenses)
             {
-                if (list.Exists(p => p.teamName == x.product || p.teamName + "s" == x.product || p.teamName == x.product.Remove(x.product.Length - 1)) == false)
+                tempTuple.teamName = x.product;
+                tempTuple.amt = x.cost;
+                if (list.Contains(tempTuple) == false)
                 {
                   //   tempTuple.teamName = x.product;
                   // var tempList = db.Expenses.Where(z => z.product.ToLower() == x.product.ToLower()).Select(z => z.cost).ToList();
@@ -45,8 +49,10 @@ namespace TDC.Tools
                     
                     foreach (var item in copy)
                     {
+                        tempTuple2.teamName = item.product;
+                        tempTuple2.amt = item.cost;
 
-                        if (item.product.ToLower() == x.product.ToLower() || item.product.ToLower() + "s" == x.product.ToLower() || item.product.ToLower() == x.product.ToLower().Remove(x.product.Length - 1))
+                        if (tempTuple.Equals(tempTuple2))
                         {
                             sum += item.cost;
                         }
@@ -99,10 +105,25 @@ namespace TDC.Tools
 
     }
 
-    public class StatsTuple {
+    public class StatsTuple : IEquatable<StatsTuple> {
         public string teamName { get; set; }
         public decimal amt { get; set; }
-    
-    
+
+
+
+        public bool Equals(StatsTuple other)
+        {
+            if (other.teamName.ToLower().Remove(other.teamName.Length - 1).Equals(this.teamName) == true || other.teamName.ToLower().Contains(this.teamName.ToLower()) == true ||
+                other.teamName.ToLower() + "s" == this.teamName.ToLower()
+                )
+            {
+                return true;
+
+            }
+            else
+	           {
+                    return false;
+	           }
+        }
     }
 }
