@@ -36,7 +36,7 @@ namespace TDC.Tools
             {
                 
                 user.checkIn = DateTime.Now;
-                ShockLU randShock = getRandIndShock(id);
+                ShockLU randShock = getRandShock();
                 ShockUser newShock = new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = id };
                 db.ShockUser.Add(newShock);
                 db.SaveChanges();
@@ -48,6 +48,23 @@ namespace TDC.Tools
 
 
         }
+        //Does a community shock, then returns the shock and the name of the team in a tuple so it can be shown in the view. 
+        public static Tuple<ShockLU, string> doCommunityShock() {
+            ApplicationDbContext db = new ApplicationDbContext();  
+            string team = getRandTeam();
+            ShockLU randShock = getRandShock();
+            foreach (var item in db.Users)
+            {
+                if (item.Affil.ToLower() == team.ToLower())
+                {
+                    db.ShockUser.Add(new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = item.Id }); 
+
+                }
+            }
+
+            return Tuple.Create(randShock , team); 
+        
+        }
 
         //Dont think I will implement this. There are only 2 or 3 global shocks, so might make sense to write manually. 
         public static void doGlobalShock(string id) 
@@ -58,13 +75,23 @@ namespace TDC.Tools
         
         }
 
-        protected static ShockLU getRandIndShock(string id) {
+        protected static ShockLU getRandShock() {
             ApplicationDbContext db = new ApplicationDbContext();
-            var user = UserActions.getUser(id);
-
-            var randList = db.ShockLU.SqlQuery("SELECT TOP 1 column FROM ShockLUs ORDER BY NEWID() ");
-            return randList.First();
+            Random rnd = new Random((int)DateTime.Now.Ticks);
+            int randNum = rnd.Next(db.ShockLU.Count());
+            var randList = db.ShockLU.ElementAt(randNum);
+            return randList;
             
+        }
+        public static string getRandTeam() {
+            ApplicationDbContext db = new ApplicationDbContext();
+            Random rnd = new Random((int)DateTime.Now.Ticks);
+            int randNum = rnd.Next(db.Users.Count());
+            var randList = db.Users.ElementAt(randNum);
+            return randList.Affil;
+
+        
+        
         }
 
 
