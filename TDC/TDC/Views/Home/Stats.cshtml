@@ -6,7 +6,9 @@
 
 <h2>Global Stats</h2>
 
-<table class="table">
+
+<h3>Most Money</h3>
+<table class="table table-bordered table-responsive table-striped">
     <tr>
         <th width="100px">
             Number
@@ -35,3 +37,63 @@
     </tr>
     }
     </table>
+    <h3>Most Popular Product</h3>
+<table class="table table-bordered table-responsive table-striped">
+    <tr>
+        <th width="100px">
+            Number
+        </th>
+        <th width="100px">
+            Team
+        </th>
+        <th width="100px">
+            Total
+        </th>
+    </tr>
+
+    @{ i = 1;}
+    @foreach (var x in ViewBag.teamTotal)
+    {
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @x.teamName
+            </td>
+            <td>
+                @x.amt
+            </td>
+        </tr>
+    }
+</table>
+<h3>Largest Team</h3>
+<table class="table table-bordered table-responsive table-striped">
+    <tr>
+        <th width="100px">
+            Number
+        </th>
+        <th width="100px">
+            Team
+        </th>
+        <th width="100px">
+            Total
+        </th>
+    </tr>
+
+    @{ i = 1;}
+    @foreach (var x in ViewBag.numOnTeams)
+    {
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @x.teamName
+            </td>
+            <td>
+                @x.amt
+            </td>
+        </tr>
+    }
+</table>
