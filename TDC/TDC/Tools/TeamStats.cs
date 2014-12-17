@@ -32,6 +32,8 @@ namespace TDC.Tools
             ApplicationDbContext db = new ApplicationDbContext();
             var tempTuple = new StatsTuple();
             var list = new List<StatsTuple>();
+
+            
             foreach (var x in db.Expenses)
             {
                 if (!list.Exists(z => z.teamName.ToLower() == x.product.ToLower()))
