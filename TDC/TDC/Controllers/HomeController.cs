@@ -23,7 +23,8 @@ namespace TDC.Controllers
             {
                 var user = UserActions.getUser(User.Identity.GetUserId());
                // var shock = ShockCalc.doIndShock(user.Id);
-                var newIncome = UserActions.addDayIncome(user.Id);
+                ShockCalc.eventChecker(user.Id);
+                ViewBag.message = UserActions.messageParser(user.Id);
 
 
 

@@ -4,6 +4,7 @@ namespace TDC.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using TDC.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<TDC.Models.ApplicationDbContext>
     {
@@ -26,6 +27,9 @@ namespace TDC.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.GlobalDate.Add(new GlobalDate { Date = DateTime.Now, Type = 1 });
+            context.GlobalDate.Add(new GlobalDate { Date = DateTime.Now, Type = 2 });
         }
     }
 }

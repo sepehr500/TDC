@@ -1,4 +1,12 @@
-﻿function shockAlert(noType) {
+﻿function eventAlert(noType) {
+    if (noType != '') {
+
         alert(noType);
     }
+    
+    
+
+        
+}
+
 

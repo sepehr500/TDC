@@ -141,12 +141,16 @@
 
 
   <script>
-      var dodo = 'cats';
+      @{string message = ViewBag.message;}
+      var message = String(@message);
+     
+      
   </script> 
     
 
 
 </div>
-<body onload="shockAlert(dodo) " ></body>
+<body onload="eventAlert(message)"></body>
+
 <script type="text/javascript" src="~/Tools/ShockControl.js"></script>
 

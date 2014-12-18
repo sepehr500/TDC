@@ -168,11 +168,17 @@
     <Compile Include="Migrations\201412180604081_Uber.Designer.cs">
       <DependentUpon>201412180604081_Uber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412181829481_ShockStuff.cs" />
+    <Compile Include="Migrations\201412181829481_ShockStuff.Designer.cs">
+      <DependentUpon>201412181829481_ShockStuff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ExpenseModels.cs" />
+    <Compile Include="Models\GlobalDateModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IncomeModels.cs" />
+    <Compile Include="Models\MessageModels.cs" />
     <Compile Include="Models\ReflectionModels.cs" />
     <Compile Include="Models\ShockLUModels.cs" />
     <Compile Include="Models\ShockUserModels.cs" />
@@ -269,6 +275,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201412180604081_Uber.resx">
       <DependentUpon>201412180604081_Uber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412181829481_ShockStuff.resx">
+      <DependentUpon>201412181829481_ShockStuff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

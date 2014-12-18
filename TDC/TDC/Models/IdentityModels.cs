@@ -51,6 +51,8 @@ namespace TDC.Models
 
         public virtual ICollection<ShockUser> ShockUser { get; set; }
 
+        public virtual ICollection<Message> Message { get; set; }
+
         //Returns the users balance
         
         public decimal getBalance()
@@ -111,6 +113,11 @@ namespace TDC.Models
         public System.Data.Entity.DbSet<TDC.Models.Expense> Expenses { get; set; }
         public System.Data.Entity.DbSet<TDC.Models.ShockLU> ShockLU { get; set; }
         public System.Data.Entity.DbSet<TDC.Models.ShockUser> ShockUser { get; set; }
+        public System.Data.Entity.DbSet<TDC.Models.Message> Message { get; set; }
+        public System.Data.Entity.DbSet<TDC.Models.GlobalDate> GlobalDate { get; set; }
+
+        
+         
         
        
     }

@@ -63,8 +63,8 @@ namespace TDC.Tools
 
 
         }
-        // Check if a day has passed and add income if it has. If 30 is returned that means that a day has not passed. 
-        public static decimal addDayIncome(string id)
+        // Check if a day has passed and add income if it has. If null is returned that means that a day has not passed. 
+        public static void addDayIncome(string id)
         {
             ApplicationDbContext db = new ApplicationDbContext();
             var ApplicationDbContext = new ApplicationDbContext();
@@ -79,8 +79,8 @@ namespace TDC.Tools
 
                     user.incomeCheck = DateTime.Now;
                     user.Income.Add(new Income { Amount = 2, Date = DateTime.Now, UserId = user.Id });
+                    user.Message.Add(new Message{notification =  "You received $2 in daily income.", UserId = user.Id});
                     db.SaveChanges();
-                    return 2;
                 }
                 //Do advanced income
                 else
@@ -89,15 +89,21 @@ namespace TDC.Tools
                     decimal getIncome = getRandIncome();
                     user.Income.Add(new Income { Amount = getIncome, Date = DateTime.Now, UserId = user.Id });
                     db.SaveChanges();
-                    return getIncome;
+                    if (getIncome == 0)
+                    {
+                        
+                        user.Message.Add(new Message { notification = "Sorry. No income today.", UserId = user.Id });
+                    }
+                    else
+                    {
+                        string deets = "You received $" + getIncome + " in daily income.";
+                        user.Message.Add(new Message { notification = deets , UserId = user.Id });
+                    }
+                    db.SaveChanges(); 
 
                 }
 
 
-            }
-            else
-            {
-                return 30;
             }
 
 
@@ -119,6 +125,23 @@ namespace TDC.Tools
                 default:
                     return 100;
             }
+
+
+        }
+
+        public static string messageParser(string id)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var ApplicationDbContext = new ApplicationDbContext();
+            var UserManager = new UserManager<User>(new UserStore<User>(ApplicationDbContext));
+            var user = UserManager.FindById(id);
+            string final = "";
+            foreach (var item in user.Message)
+            {
+                final += item.notification + "/n"; 
+            }
+            return final;
+            
 
 
         }
