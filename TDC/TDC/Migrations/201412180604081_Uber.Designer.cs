@@ -7,13 +7,13 @@ namespace TDC.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class UBER : IMigrationMetadata
+    public sealed partial class Uber : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UBER));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Uber));
         
         string IMigrationMetadata.Id
         {
-            get { return "201412150326134_UBER"; }
+            get { return "201412180604081_Uber"; }
         }
         
         string IMigrationMetadata.Source

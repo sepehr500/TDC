@@ -17,6 +17,8 @@ namespace TDC.Models
         
         public DateTime checkIn { get; set; }
 
+        public DateTime incomeCheck { get; set; }
+
         // 1 = easy 2 = intermediate  3 = advanced
         public int level { get; set; }
 

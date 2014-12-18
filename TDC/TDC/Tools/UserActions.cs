@@ -9,19 +9,19 @@ using TDC.Models;
 
 namespace TDC.Tools
 {
-    public class UserActions 
+    public class UserActions
     {
         //use this to get current user
         public static User getUser(string id)
         {
-           ApplicationDbContext db = new ApplicationDbContext(); 
+            ApplicationDbContext db = new ApplicationDbContext();
             var ApplicationDbContext = new ApplicationDbContext();
             var UserManager = new UserManager<User>(new UserStore<User>(ApplicationDbContext));
             var user = UserManager.FindById(id);
             return user;
         }
 
-        
+
         //Returns number of people on individual team
         public static int teamCount(User user)
         {
@@ -36,34 +36,92 @@ namespace TDC.Tools
         }
 
         //Returns a List of IFundControl that can be used to get funds. Log.Sum(x => x.getAmt()) to get sum of log. 
-       public static List<IFundControl> getLog(string id){
-    
-                var Log = new List<IFundControl>();
-                
+        public static List<IFundControl> getLog(string id)
+        {
 
-                var ApplicationDbContext = new ApplicationDbContext();
-                var UserManager = new UserManager<User>(new UserStore<User>(ApplicationDbContext));
-                var user = UserManager.FindById(id);
+            var Log = new List<IFundControl>();
 
-                foreach (Income x in user.Income)
+
+            var ApplicationDbContext = new ApplicationDbContext();
+            var UserManager = new UserManager<User>(new UserStore<User>(ApplicationDbContext));
+            var user = UserManager.FindById(id);
+
+            foreach (Income x in user.Income)
+            {
+                Log.Add(x);
+            }
+            foreach (Expense x in user.Expense)
+            {
+                Log.Add(x);
+            }
+            foreach (ShockUser x in user.ShockUser)
+            {
+                Log.Add(x);
+            }
+            return Log;
+
+
+
+        }
+        // Check if a day has passed and add income if it has. If 30 is returned that means that a day has not passed. 
+        public static decimal addDayIncome(string id)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var ApplicationDbContext = new ApplicationDbContext();
+            var UserManager = new UserManager<User>(new UserStore<User>(ApplicationDbContext));
+            var user = UserManager.FindById(id);
+
+            if (user.incomeCheck.Day < DateTime.Now.Day)
+            {
+                if (user.level == 1 || user.level == 2)
                 {
-                    Log.Add(x);
+
+
+                    user.incomeCheck = DateTime.Now;
+                    user.Income.Add(new Income { Amount = 2, Date = DateTime.Now, UserId = user.Id });
+                    db.SaveChanges();
+                    return 2;
                 }
-                foreach (Expense x in user.Expense)
+                //Do advanced income
+                else
                 {
-                    Log.Add(x);
+                    user.incomeCheck = DateTime.Now;
+                    decimal getIncome = getRandIncome();
+                    user.Income.Add(new Income { Amount = getIncome, Date = DateTime.Now, UserId = user.Id });
+                    db.SaveChanges();
+                    return getIncome;
+
                 }
-                foreach (ShockUser x in user.ShockUser)
-                {
-                    Log.Add(x);
-                }
-                return Log;
 
 
-    
-    }
+            }
+            else
+            {
+                return 30;
+            }
 
 
+        }
+        private static decimal getRandIncome()
+        {
+            Random x = new Random((int)DateTime.Now.Ticks);
+            int num = x.Next(3);
+            switch (num)
+            {
+                case 0:
+                    return 0;
+                case 1:
+                    return 3;
+                case 2:
+                    return 2;
+                case 3:
+                    return 1;
+                default:
+                    return 100;
+            }
+
+
+        }
 
 
     }
@@ -78,7 +136,7 @@ namespace TDC.Tools
         DateTime getDate();
     }
 
-    
+
 
 
 

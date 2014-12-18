@@ -3,7 +3,7 @@ namespace TDC.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class UBER : DbMigration
+    public partial class Uber : DbMigration
     {
         public override void Up()
         {
@@ -27,6 +27,7 @@ namespace TDC.Migrations
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         checkIn = c.DateTime(nullable: false),
+                        incomeCheck = c.DateTime(nullable: false),
                         level = c.Int(nullable: false),
                         type = c.Int(nullable: false),
                         sex = c.Int(),

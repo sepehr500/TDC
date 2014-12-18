@@ -164,13 +164,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201412150326134_UBER.cs" />
-    <Compile Include="Migrations\201412150326134_UBER.Designer.cs">
-      <DependentUpon>201412150326134_UBER.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412150241405_another.cs" />
-    <Compile Include="Migrations\201412150241405_another.Designer.cs">
-      <DependentUpon>201412150241405_another.cs</DependentUpon>
+    <Compile Include="Migrations\201412180604081_Uber.cs" />
+    <Compile Include="Migrations\201412180604081_Uber.Designer.cs">
+      <DependentUpon>201412180604081_Uber.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -271,11 +267,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412150326134_UBER.resx">
-      <DependentUpon>201412150326134_UBER.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412150241405_another.resx">
-      <DependentUpon>201412150241405_another.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201412180604081_Uber.resx">
+      <DependentUpon>201412180604081_Uber.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

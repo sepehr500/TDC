@@ -95,7 +95,7 @@ namespace TDC.Controllers
             if (ModelState.IsValid)
             {
                 
-                var user = new User() { UserName = model.Email, Email = model.Email, checkIn = DateTime.Now, sex = model.sex, Affil = model.Affil, level = model.level, type = model.type, Zip = model.Zip, again = model.again, ParticipantOrOrgan = model.ParticipantOrOrgan, Income = new List<Income>()};
+                var user = new User() { UserName = model.Email, Email = model.Email, checkIn = DateTime.Now, sex = model.sex, Affil = model.Affil, level = model.level, type = model.type, Zip = model.Zip, again = model.again, ParticipantOrOrgan = model.ParticipantOrOrgan, Income = new List<Income>(), incomeCheck = DateTime.Now};
                 var income = new Income() { Amount = 2, Date = DateTime.Now, UserId = user.Id};
                  
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
