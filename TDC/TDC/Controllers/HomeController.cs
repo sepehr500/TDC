@@ -52,9 +52,9 @@ namespace TDC.Controllers
 
         public ActionResult Stats()
         {
-            ViewBag.teamMoney = TeamStats.getTeamMoney();
-            ViewBag.teamTotal = TeamStats.getPopItem();
-            ViewBag.numOnTeams = TeamStats.getTotalTeam();
+            ViewBag.teamMoney =  TeamStats.getTeamMoney().OrderByDescending(x => x.amt);
+            ViewBag.teamTotal = TeamStats.getPopItem().OrderByDescending(x => x.amt);
+            ViewBag.numOnTeams = TeamStats.getTotalTeam().OrderByDescending(x => x.amt);
             return View();
         }
 

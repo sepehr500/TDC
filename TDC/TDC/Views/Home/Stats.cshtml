@@ -21,11 +21,12 @@
         </th>
     </tr>
 
-    @{int i = 1;}
+    @{int i = 0;}
     @foreach (var x in ViewBag.teamMoney)
     {
         <tr>
         <td>
+            @{i = i + 1;}
             @i
         </td>
         <td>
@@ -51,11 +52,12 @@
         </th>
     </tr>
 
-    @{ i = 1;}
+    @{ i = 0;}
     @foreach (var x in ViewBag.teamTotal)
     {
         <tr>
             <td>
+                @{i = i + 1;}
                 @i
             </td>
             <td>
@@ -81,11 +83,12 @@
         </th>
     </tr>
 
-    @{ i = 1;}
+    @{ i = 0;}
     @foreach (var x in ViewBag.numOnTeams)
     {
         <tr>
             <td>
+                @{i = i + 1; }
                 @i
             </td>
             <td>

@@ -105,7 +105,7 @@ namespace TDC.Tools
 
     }
 
-    public class StatsTuple : IEquatable<StatsTuple> {
+    public class StatsTuple : IEquatable<StatsTuple> , IComparable<StatsTuple> {
         public string teamName { get; set; }
         public decimal amt { get; set; }
 
@@ -124,6 +124,11 @@ namespace TDC.Tools
 	           {
                     return false;
 	           }
+        }
+
+        public int CompareTo(StatsTuple obj)
+        {
+            return Decimal.Compare(this.amt, obj.amt);
         }
     }
 }

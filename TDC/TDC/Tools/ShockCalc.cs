@@ -79,8 +79,8 @@ namespace TDC.Tools
             ApplicationDbContext db = new ApplicationDbContext();
             Random rnd = new Random((int)DateTime.Now.Ticks);
             int randNum = rnd.Next(db.ShockLU.Count());
-            var randList = db.ShockLU.ElementAt(randNum);
-            return randList;
+            var randShock = db.ShockLU.ElementAt(randNum);
+            return randShock;
             
         }
         public static string getRandTeam() {
