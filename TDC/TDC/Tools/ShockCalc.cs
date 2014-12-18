@@ -77,18 +77,18 @@ namespace TDC.Tools
 
         protected static ShockLU getRandShock() {
             ApplicationDbContext db = new ApplicationDbContext();
-            Random rnd = new Random((int)DateTime.Now.Ticks);
-            int randNum = rnd.Next(db.ShockLU.Count());
-            var randShock = db.ShockLU.ElementAt(randNum);
+            var randShock = (from row in db.ShockLU
+                        orderby Guid.NewGuid()
+                        select row).FirstOrDefault();
             return randShock;
             
         }
         public static string getRandTeam() {
             ApplicationDbContext db = new ApplicationDbContext();
-            Random rnd = new Random((int)DateTime.Now.Ticks);
-            int randNum = rnd.Next(db.Users.Count());
-            var randList = db.Users.ElementAt(randNum);
-            return randList.Affil;
+            var randTeam = (from row in db.Users
+                             orderby Guid.NewGuid()
+                             select row).FirstOrDefault(); 
+            return randTeam.Affil;
 
         
         

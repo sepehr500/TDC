@@ -22,6 +22,9 @@ namespace TDC.Controllers
             if (User.Identity.IsAuthenticated == true)
             {
                 var user = UserActions.getUser(User.Identity.GetUserId());
+                var shock = ShockCalc.doIndShock(user.Id);
+
+
 
                 return View(user);
             }

@@ -1,4 +1,4 @@
-﻿window.onload = function shockAlert(noType) {
+﻿function shockAlert(noType) {
         alert(noType);
     }
 
