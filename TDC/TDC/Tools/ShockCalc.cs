@@ -60,7 +60,7 @@ namespace TDC.Tools
         private static void doCommunityShock() {
             
             ApplicationDbContext db = new ApplicationDbContext();
-            if (db.GlobalDate.Last().Date.AddHours(42) < DateTime.Now)
+            if (db.GlobalDate.Find(2).Date.AddHours(42) < DateTime.Now)
             {
                 var teamList = TeamStats.getTeamMoney().OrderByDescending(x => x.amt);
                 string team = teamList.First().teamName;
@@ -74,7 +74,7 @@ namespace TDC.Tools
                     }
                     db.Message.Add(new Message { notification = getCommunityString(item.Affil, randShock), UserId = item.Id });
                 }
-                db.GlobalDate.Last().Date = DateTime.Now;
+                db.GlobalDate.Find(2).Date = DateTime.Now;
                 db.SaveChanges();
             }
         
