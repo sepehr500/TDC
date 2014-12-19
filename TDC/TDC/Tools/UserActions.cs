@@ -138,8 +138,10 @@ namespace TDC.Tools
             string final = "";
             foreach (var item in user.Message)
             {
-                final += item.notification + "/n"; 
+                final += item.notification + "/n";
+                user.Message.Remove(item); 
             }
+            db.SaveChanges();
             return final;
             
 

@@ -1,11 +1,10 @@
 ﻿@using TDC.Models
 @model LoginViewModel
 @{
+   
     ViewBag.Title = "Splash";
 }
-<head>
-    <link href="~/Content/Site.css" rel="stylesheet" />
-</head>
+
 @*<section id="main-slider" class="no-margin">
     <div class="carousel slide">
         <ol class="carousel-indicators">
@@ -129,52 +128,16 @@
     <a class=" left carousel-control " href="#myCarousel" role="button" data-slide="prev"> <span class=" glyphicon-chevron-left"></span></a>
     <a class="right carousel-control " href="#myCarousel" role="button" data-slide="next"><span class="glyphicon-chevron-right"></span></a>
 </div>*@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Two Dollar Challenge</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
 
-            <form class="navbar-form navbar-right" role="form" abineguid="1292B6467C1649B390772CD56CD12C05">
-                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-
-                    @Html.ValidationSummary(true, "")
-                    <div class="form-group">
-                    @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", style = "color: black !important; background-color: white !important;" })
-                    @Html.ValidationMessageFor(m => m.Email, "") 
-                    </div>
-                    <div class="form-group">
-                    @Html.PasswordFor(m => m.Password,  new {placeholder = "Password", style = "color: black !important; background-color: white !important;" } )
-                    @Html.ValidationMessageFor(m => m.Password, "")
-                        </div>
-                    @*<div class="checkbox">
-                        @Html.CheckBoxFor(m => m.RememberMe)
-                        @Html.LabelFor(m => m.RememberMe)
-                    </div>*@
-                    <div class="form-group">
-                        <input type="submit" value="Log in" class="btn btn-default" />
-                    </div>
-                }
-                </form>
-</div><!--/.navbar-collapse -->
-</div>
-</nav>
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-        <h1>Welcome!</h1>
-        <p>Sign in above, or click bellow to create an account.</p>
-        <p><a class="btn btn-primary btn-lg" href="~/Account/Register" role="button">Register &raquo;</a></p>
+        <h1><center>Welcome!</center></h1>
+        <center>
+        <p><a class="btn btn-primary btn-lg" href="~/Account/Register" role="button">Register &raquo;</a>
+        <a class="btn btn-primary btn-lg" href="~/Account/Login" role="button">Login&raquo;</a></p>
+            </center>
     </div>
 </div>
 
