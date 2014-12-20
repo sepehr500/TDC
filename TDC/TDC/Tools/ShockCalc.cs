@@ -140,7 +140,7 @@ namespace TDC.Tools
 
         private static string getCommunityString(string TeamName, ShockLU deets)
         {
-            return "COMMUNITY SHOCK: " + TeamName +  deets.Description;
+            return "COMMUNITY SHOCK: " + TeamName + " " +  deets.Description;
 
         }
         private static string getIndString( ShockLU deets)
@@ -150,7 +150,7 @@ namespace TDC.Tools
         }
         private static string getGlobalString(ShockLU deets)
         {
-            return "GLOBAL SHOCK: Everybody was" + deets.Description;
+            return "GLOBAL SHOCK: Everybody was " + deets.Description;
 
         }
 

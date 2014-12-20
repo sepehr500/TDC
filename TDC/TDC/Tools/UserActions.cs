@@ -58,7 +58,9 @@ namespace TDC.Tools
             foreach (ShockUser x in user.ShockUser)
             {
                 Log.Add(x);
+
             }
+            Log.Sort();
             return Log;
 
 
@@ -78,29 +80,34 @@ namespace TDC.Tools
                 {
 
 
-                    user.incomeCheck = DateTime.Now;
-                    user.Income.Add(new Income { Amount = 2, Date = DateTime.Now, UserId = user.Id });
-                    user.Message.Add(new Message{notification =  "You received $2 in daily income.", UserId = user.Id});
+                    
+                    User change = db.Users.Find(user.Id);
+                    change.incomeCheck = DateTime.Now;
+                    change.Income.Add(new Income { Amount = 2, Date = DateTime.Now, UserId = user.Id });
+                    change.Message.Add(new Message{notification =  "You received $2 in daily income.", UserId = user.Id});
                     db.SaveChanges();
+
                 }
                 //Do advanced income
                 else
                 {
-                    user.incomeCheck = DateTime.Now;
+                    User change = db.Users.Find(user.Id);
+                    change.incomeCheck = DateTime.Now;
                     decimal getIncome = getRandIncome();
-                    user.Income.Add(new Income { Amount = getIncome, Date = DateTime.Now, UserId = user.Id });
+                    change.Income.Add(new Income { Amount = getIncome, Date = DateTime.Now, UserId = user.Id });
                     db.SaveChanges();
                     if (getIncome == 0)
                     {
                         
-                        user.Message.Add(new Message { notification = "Sorry. No income today.", UserId = user.Id });
+                        change.Message.Add(new Message { notification = "Sorry. No income today.", UserId = user.Id });
+                        db.SaveChanges();
                     }
                     else
                     {
                         string deets = "You received $" + getIncome + " in daily income.";
-                        user.Message.Add(new Message { notification = deets , UserId = user.Id });
+                        change.Message.Add(new Message { notification = deets , UserId = user.Id });
+                        db.SaveChanges(); 
                     }
-                    db.SaveChanges(); 
 
                 }
 
@@ -159,7 +166,7 @@ namespace TDC.Tools
     }
 
     //Interface to control Funds. To add up funds use Log.Sum(x => x.getAmt())
-    public interface IFundControl
+    public interface IFundControl : IComparable<IFundControl>
     {
         decimal getAmt();
 

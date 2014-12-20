@@ -36,6 +36,11 @@ namespace TDC.Models
         {
             return Date;
         }
+
+        public int CompareTo(IFundControl other)
+        {
+            return Date.CompareTo(other.getDate());
+        }
     }
 
 }
