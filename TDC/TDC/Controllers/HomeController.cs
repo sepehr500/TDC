@@ -68,6 +68,33 @@ namespace TDC.Controllers
             return View();
         }
 
+        public ActionResult ReflectionView() {
+            var user = UserActions.getUser(User.Identity.GetUserId());
+
+            return View(user.Reflection.ToList());
+        }
+        public ActionResult CreateReflection()
+        {
+            
+            return View();
+        }
+
+        // POST: Expenses/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateReflection([Bind(Include = "ID, Memo")]  Reflection reflection)
+        {
+                var user = UserActions.getUser(User.Identity.GetUserId());
+                reflection.UserId = user.Id;
+                reflection.Date = DateTime.Now;
+                db.Reflections.Add(reflection);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
+
+        }
+
 
 
     }
