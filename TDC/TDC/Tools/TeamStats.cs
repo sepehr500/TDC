@@ -113,17 +113,22 @@ namespace TDC.Tools
 
         public bool Equals(StatsTuple other)
         {
-            if (other.teamName.ToLower().Remove(other.teamName.Length - 1).Equals(this.teamName) == true || other.teamName.ToLower().Contains(this.teamName.ToLower()) == true ||
+            if (other.teamName != null)
+            {
+                if (other.teamName.ToLower().Remove(other.teamName.Length - 1).Equals(this.teamName) == true || other.teamName.ToLower().Contains(this.teamName.ToLower()) == true ||
                 other.teamName.ToLower() + "s" == this.teamName.ToLower()
                 )
-            {
-                return true;
+                {
+                    return true;
 
-            }
-            else
-	           {
+                }
+                else
+                {
                     return false;
-	           }
+                }
+            }
+
+            return false;
         }
 
         public int CompareTo(StatsTuple obj)

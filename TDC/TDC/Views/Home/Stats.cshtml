@@ -1,102 +1,133 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Stats";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Global Stats</h2>
+<div class="row">
+    <div class="col-xs-8 col-xs-push-2">
+        <div class="panel box-shadows-rock" style="padding: 10px 10px 10px 10px">
+            <h2 class="text-center" style="color:#FFFFFF; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Global Stats</h2>
+        </div>
+    </div>
+</div>
 
 
-<h3>Most Money</h3>
-<table class="table table-bordered table-responsive table-striped  ">
-    <tr>
-        <th width="100px">
-            Number
-        </th>
-        <th width="100px">
-            Team
-        </th>
-        <th width="100px">
-            Total
-        </th>
-    </tr>
-
-    @{int i = 0;}
-    @foreach (var x in ViewBag.teamMoney)
-    {
+<div class="panel box-shadows-rock" style="padding: 10px 10px 10px 10px">
+    <h3 class="text-center" style="color:#FFFFFF; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Most Money</h3>
+    <hr />
+    <table class="table table-bordered table-responsive table-striped" style="background-color:#FFFFFF">
         <tr>
-        <td>
-            @{i = i + 1;}
-            @i
-        </td>
-        <td>
-            @x.teamName
-        </td>
-        <td>
-            @x.amt
-        </td>
-    </tr>
-    }
+            <th width="100px">
+                Number
+            </th>
+            <th width="100px">
+                Team
+            </th>
+            <th width="100px">
+                Total
+            </th>
+        </tr>
+
+        @{int i = 0;}
+        @foreach (var x in ViewBag.teamMoney)
+        {
+            //string classType = "";
+            //if (String.Equals(x.getType(), "Income")) { classType = "success"; }
+            //else if (String.Equals(x.getType(), "Expense")) { classType = "danger"; }
+            //else if (String.Equals(x.getType(), "Expense")) { classType = "danger"; }
+
+            <tr class="default">
+                <td>
+                    @{i = i + 1;}
+                    @i
+                </td>
+                <td>
+                    @x.teamName
+                </td>
+                <td>
+
+                    @x.amt
+                </td>
+            </tr>
+        }
     </table>
-    <h3>Most Popular Product</h3>
-<table class="table table-bordered table-responsive table-striped">
-    <tr>
-        <th width="100px">
-            Number
-        </th>
-        <th width="100px">
-            Team
-        </th>
-        <th width="100px">
-            Total
-        </th>
-    </tr>
 
-    @{ i = 0;}
-    @foreach (var x in ViewBag.teamTotal)
-    {
+</div>
+<div class="panel box-shadows-rock" style="padding: 10px 10px 10px 10px">
+    <h3 class="text-center" style="color:#FFFFFF; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Most Popular Product</h3>
+    <hr />
+    <table class="table table-bordered table-responsive table-striped" style="background-color:#FFFFFF">
         <tr>
-            <td>
-                @{i = i + 1;}
-                @i
-            </td>
-            <td>
-                @x.teamName
-            </td>
-            <td>
-                @x.amt
-            </td>
+            <th width="100px">
+                Number
+            </th>
+            <th width="100px">
+                Team
+            </th>
+            <th width="100px">
+                Total
+            </th>
         </tr>
-    }
-</table>
-<h3>Largest Team</h3>
-<table class="table table-bordered table-responsive table-striped">
-    <tr>
-        <th width="100px">
-            Number
-        </th>
-        <th width="100px">
-            Team
-        </th>
-        <th width="100px">
-            Total
-        </th>
-    </tr>
 
-    @{ i = 0;}
-    @foreach (var x in ViewBag.numOnTeams)
-    {
+        @{ i = 0;}
+        @foreach (var x in ViewBag.teamTotal)
+        {
+            //string classType = "";
+            //if (String.Equals(x.getType(), "Income")) { classType = "success"; }
+            //else if (String.Equals(x.getType(), "Expense")) { classType = "danger"; }
+            //else if (String.Equals(x.getType(), "Expense")) { classType = "danger"; }
+
+            <tr class="default">
+                <td>
+                    @{i = i + 1;}
+                    @i
+                </td>
+                <td>
+                    @x.teamName
+                </td>
+                <td>
+                    @x.amt
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<div class="panel box-shadows-rock" style="padding: 10px 10px 10px 10px">
+    <h3 class="text-center" style="color:#FFFFFF; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Largest Team</h3>
+    <hr/>
+    <table class="table table-bordered table-responsive table-striped" style="background-color:#FFFFFF">
         <tr>
-            <td>
-                @{i = i + 1; }
-                @i
-            </td>
-            <td>
-                @x.teamName
-            </td>
-            <td>
-                @x.amt
-            </td>
+            <th width="100px">
+                Number
+            </th>
+            <th width="100px">
+                Team
+            </th>
+            <th width="100px">
+                Total
+            </th>
         </tr>
-    }
-</table>
+
+        @{ i = 0;}
+        @foreach (var x in ViewBag.numOnTeams)
+        {
+            //string classType = "";
+            //if (String.Equals(x.getType(), "Income")) { classType = "success"; }
+            //else if (String.Equals(x.getType(), "Expense")) { classType = "danger"; }
+            //else if (String.Equals(x.getType(), "Expense")) { classType = "danger"; }
+
+            <tr class="default">
+                <td>
+                    @{i = i + 1; }
+                    @i
+                </td>
+                <td>
+                    @x.teamName
+                </td>
+                <td>
+                    @x.amt
+                </td>
+            </tr>
+        }
+    </table>
+</div>
