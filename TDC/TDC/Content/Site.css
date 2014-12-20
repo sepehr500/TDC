@@ -17,3 +17,7 @@ textarea,
     max-width: 280px;
     background-color:#ffffff;
 }
+
+.box-shadows-rock{
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+}

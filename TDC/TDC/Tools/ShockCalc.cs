@@ -20,10 +20,14 @@ namespace TDC.Tools
     public class ShockCalc
     {
         public static void eventChecker(User user){
-            doIndShock(user.Id);
-            doGlobalShock();
-            doCommunityShock();
-            UserActions.addDayIncome(user.Id);
+            if (user != null)
+            {
+                doIndShock(user.Id);
+                doGlobalShock();
+                doCommunityShock();
+                UserActions.addDayIncome(user.Id);
+            }
+            
             
         
         
