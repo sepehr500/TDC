@@ -261,6 +261,8 @@
     <Content Include="Views\Expenses\Index.cshtml" />
     <Content Include="Views\Home\Splash.cshtml" />
     <Content Include="Views\Home\Stats.cshtml" />
+    <Content Include="Views\Home\CreateReflection.cshtml" />
+    <Content Include="Views\Home\ReflectionView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
