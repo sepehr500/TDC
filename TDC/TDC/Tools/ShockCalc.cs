@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
 using TDC.Models;
+using System.Data.Entity;
 
 namespace TDC.Tools
 {
@@ -18,11 +19,12 @@ namespace TDC.Tools
 
     public class ShockCalc
     {
-        public static void eventChecker(string id){
-            doIndShock(id);
+        public static void eventChecker(User user){
+            doIndShock(user.Id);
             doGlobalShock();
             doCommunityShock();
-            UserActions.addDayIncome(id);
+            UserActions.addDayIncome(user.Id);
+            
         
         
         }
@@ -34,6 +36,7 @@ namespace TDC.Tools
             //get user id
             ApplicationDbContext db = new ApplicationDbContext();  
             var user = UserActions.getUser(id);
+            var another = UserActions.getUser(id);
             
             
             DateTime startDate = user.checkIn;
@@ -43,12 +46,14 @@ namespace TDC.Tools
             DateTime checkTime = startDate.AddHours(randHours);
             if (DateTime.Now.Ticks > checkTime.Ticks)
             {
+                User change = db.Users.Find(user.Id);
+                change.checkIn = DateTime.Now;
                 
-                user.checkIn = DateTime.Now;
                 ShockLU randShock = getRandShock(1);
                 ShockUser newShock = new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = id };
                 db.ShockUser.Add(newShock);
                 db.Message.Add(new Message { notification = getIndString(randShock), UserId = user.Id });
+                
                 db.SaveChanges();
 
             }
@@ -65,16 +70,19 @@ namespace TDC.Tools
                 var teamList = TeamStats.getTeamMoney().OrderByDescending(x => x.amt);
                 string team = teamList.First().teamName;
                 ShockLU randShock = getRandShock(2);
+                
                 foreach (var item in db.Users)
                 {
                     if (item.Affil.ToLower() == team.ToLower())
                     {
+
                         db.ShockUser.Add(new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = item.Id });
                         
                     }
                     db.Message.Add(new Message { notification = getCommunityString(item.Affil, randShock), UserId = item.Id });
                 }
                 db.GlobalDate.Find(2).Date = DateTime.Now;
+
                 db.SaveChanges();
             }
         
@@ -128,12 +136,12 @@ namespace TDC.Tools
 
         private static string getCommunityString(string TeamName, ShockLU deets)
         {
-            return "COMMUNITY SHOCK: " + TeamName + "was " + deets.Description;
+            return "COMMUNITY SHOCK: " + TeamName +  deets.Description;
 
         }
         private static string getIndString( ShockLU deets)
         {
-            return "PERSONAL SHOCK: You were" + deets.Description;
+            return "PERSONAL SHOCK: " + deets.Description;
 
         }
         private static string getGlobalString(ShockLU deets)

@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,11 +22,15 @@ namespace TDC.Controllers
         {
             if (User.Identity.IsAuthenticated == true)
             {
+
                 var user = UserActions.getUser(User.Identity.GetUserId());
                // var shock = ShockCalc.doIndShock(user.Id);
-                ShockCalc.eventChecker(user.Id);
-                ViewBag.message = UserActions.messageParser(user.Id);
+                ShockCalc.eventChecker(user);
+                ViewBag.message = UserActions.messageParser(user);
+                
+                
 
+                
 
 
                 return View(user);

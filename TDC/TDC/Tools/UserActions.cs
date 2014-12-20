@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -129,19 +130,22 @@ namespace TDC.Tools
 
         }
 
-        public static string messageParser(string id)
+        public static string messageParser(User user)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            var ApplicationDbContext = new ApplicationDbContext();
-            var UserManager = new UserManager<User>(new UserStore<User>(ApplicationDbContext));
-            var user = UserManager.FindById(id);
+            ApplicationDbContext db = new ApplicationDbContext(); 
+            
             string final = "";
+            var list =  user.Message.ToList();
             foreach (var item in user.Message)
             {
-                final += item.notification + "/n";
-                user.Message.Remove(item); 
-            }
-            db.SaveChanges();
+                final += item.notification + "\n\n";
+
+                Message delete = db.Message.Find(item.ID);
+                db.Message.Remove(delete);
+                db.SaveChanges();
+                
+            }   
+            
             return final;
             
 
