@@ -4,25 +4,32 @@
     ViewBag.Title = "Manage Account";
 }
 
-<h2>@ViewBag.Title.</h2>
+<div class="row">
+    <div class="col-xs-8 col-xs-push-2">
+        <div class="panel box-shadows-rock" style="padding: 10px 10px 10px 10px">
+            <h2 class="text-center" style="color:#FFFFFF; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">@ViewBag.Title</h2>
+        </div>
+    </div>
+</div>
+
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div class="row">
-    <div class="col-md-12">
-        @if (ViewBag.HasLocalPassword)
-        {
-            @Html.Partial("_ChangePasswordPartial")
-        }
-        else
-        {
-            @Html.Partial("_SetPasswordPartial")
-        }
+    
+    @if (ViewBag.HasLocalPassword)
+    {
+        @Html.Partial("_ChangePasswordPartial")
+    }
+    else
+    {
+        @Html.Partial("_SetPasswordPartial")
+    }
 
-        <section id="externalLogins">
-            @Html.Action("RemoveAccountList")
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
+    @*<section id="externalLogins">
+        @Html.Action("RemoveAccountList")
+        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
+    </section>*@
+    
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

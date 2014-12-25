@@ -14,13 +14,17 @@
     
     <div class="row">
         <div class="col-xs-8 col-xs-push-2">
-            <div class="jumbotron box-shadows-rock" style="text-align: center; background-color:#0094ff;">
-                <h1 style="color:#FFFFFF">You @(Model.getBalance() < 0 ? "owe" : "have") $@Math.Abs(Model.getBalance()) </h1>
+            <div class="panel box-shadows-rock" style="padding: 10px 10px 10px 10px">
+                <h2 class="text-center" style="color:#FFFFFF; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">You @(Model.getBalance() < 0 ? "owe" : "have") $@Math.Abs(Model.getBalance()) </h2>
             </div>
         </div>
     </div>
+
+
+
+
     <div class="row">
-        <div class="col-xs-8 col-xs-push-2">
+        <div >
 
             <div class="panel panel-default box-shadows-rock">
                 <div class="panel-body">
