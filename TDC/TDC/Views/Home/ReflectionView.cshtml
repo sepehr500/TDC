@@ -14,7 +14,7 @@
 </div>
 
 <p>
-    @Html.ActionLink("Create New Reflection", "Create", "List", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Create New", "CreateReflection")
 </p>
 <table class="table table-bordered table-responsive table-striped" style="background-color:#FFFFFF" >
     <tr>
@@ -27,27 +27,27 @@
         <th>
             @Html.DisplayNameFor(model => model.Memo)
         </th>
-
+        
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Affil)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Memo)
-            </td>
-            @*<td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-                </td>*@
-        </tr>
-    }
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Affil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Memo)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>*@
+    </tr>
+}
 
 </table>
