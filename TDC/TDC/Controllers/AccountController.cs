@@ -88,15 +88,23 @@ namespace TDC.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, int FormLevel)
         {
             
             
             if (ModelState.IsValid)
             {
                 
-                var user = new User() { UserName = model.Email, Email = model.Email, checkIn = DateTime.Now, sex = model.sex, Affil = model.Affil, level = model.level, type = model.type, Zip = model.Zip, again = model.again, ParticipantOrOrgan = model.ParticipantOrOrgan, Income = new List<Income>(), incomeCheck = DateTime.Now};
-                var income = new Income() { Amount = 2, Date = DateTime.Now, UserId = user.Id};
+                var user = new User() { UserName = model.Email, Email = model.Email, checkIn = DateTime.Now, sex = model.sex, Affil = model.Affil, level = FormLevel, type = model.type, Zip = model.Zip, again = model.again, ParticipantOrOrgan = model.ParticipantOrOrgan, Income = new List<Income>(), incomeCheck = DateTime.Now};
+                Income income;
+                if (user.level == 1)
+                {
+                    income = new Income() { Amount = 10, Date = DateTime.Now, UserId = user.Id};
+                }
+                else
+                {
+                income = new Income() { Amount = 2, Date = DateTime.Now, UserId = user.Id};
+                }
                  
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

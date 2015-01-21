@@ -76,7 +76,8 @@ namespace TDC.Tools
 
             if (user.incomeCheck.Day < DateTime.Now.Day)
             {
-                if (user.level == 1 || user.level == 2)
+
+                if ( user.level == 2)
                 {
 
 
@@ -89,7 +90,7 @@ namespace TDC.Tools
 
                 }
                 //Do advanced income
-                else
+                if(user.level == 3)
                 {
                     User change = db.Users.Find(user.Id);
                     change.incomeCheck = DateTime.Now;

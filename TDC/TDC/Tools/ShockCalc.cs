@@ -53,6 +53,7 @@ namespace TDC.Tools
                 User change = db.Users.Find(user.Id);
                 change.checkIn = DateTime.Now;
                 
+                
                 ShockLU randShock = getRandShock(1);
                 ShockUser newShock = new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = id };
                 db.ShockUser.Add(newShock);
