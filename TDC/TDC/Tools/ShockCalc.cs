@@ -78,14 +78,21 @@ namespace TDC.Tools
                 
                 foreach (var item in db.Users)
                 {
-                    if (item.Affil.ToLower() == team.ToLower())
+                    if (item.level != 1)
                     {
 
-                        db.ShockUser.Add(new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = item.Id });
-                        
+
+                        if (item.Affil.ToLower() == team.ToLower())
+                        {
+
+                            db.ShockUser.Add(new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = item.Id });
+
+                        }
+
+                        db.Message.Add(new Message { notification = getCommunityString(item.Affil, randShock), UserId = item.Id });
                     }
-                    db.Message.Add(new Message { notification = getCommunityString(item.Affil, randShock), UserId = item.Id });
                 }
+
                 db.GlobalDate.Find(2).Date = DateTime.Now;
 
                 db.SaveChanges();
@@ -102,9 +109,13 @@ namespace TDC.Tools
                 ShockLU randShock = getRandShock(3); 
                 foreach (var item in db.Users)
                 {
-                    db.ShockUser.Add(new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = item.Id });
-                    db.Message.Add(new Message { notification = getGlobalString(randShock), UserId = item.Id });
+                    if (item.level != 1)
+                    {
 
+                        db.ShockUser.Add(new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = item.Id });
+                        db.Message.Add(new Message { notification = getGlobalString(randShock), UserId = item.Id });
+
+                    }
                     
                 }
 
