@@ -10,7 +10,9 @@ namespace TDC.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(TDC.Models.ApplicationDbContext context)
@@ -47,6 +49,7 @@ namespace TDC.Migrations
             context.ShockLU.Add(new ShockLU { Amount = (decimal)-.20, Description = "experiences Hurricane Zelda. Each member pays .20 cents for clean up.", ShockType = 2 });
             context.ShockLU.Add(new ShockLU { Amount = (decimal)-.05, Description = "local power grid fails. Each member pays .05 cents.", ShockType = 2 });
             context.ShockLU.Add(new ShockLU { Amount = (decimal)-.05, Description = "forms a savings group. Each person receives .05 cents extra.", ShockType = 2 });
+            context.SaveChanges();
 
         }
     }
