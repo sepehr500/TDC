@@ -172,6 +172,10 @@
     <Compile Include="Migrations\201412181829481_ShockStuff.Designer.cs">
       <DependentUpon>201412181829481_ShockStuff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501281730181_TimeZone.cs" />
+    <Compile Include="Migrations\201501281730181_TimeZone.Designer.cs">
+      <DependentUpon>201501281730181_TimeZone.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ExpenseModels.cs" />
@@ -283,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412181829481_ShockStuff.resx">
       <DependentUpon>201412181829481_ShockStuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501281730181_TimeZone.resx">
+      <DependentUpon>201501281730181_TimeZone.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

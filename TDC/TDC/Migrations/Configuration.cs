@@ -10,7 +10,7 @@ namespace TDC.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
             
             AutomaticMigrationDataLossAllowed = true;
         }
