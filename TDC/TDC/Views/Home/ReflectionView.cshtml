@@ -18,9 +18,7 @@
 </p>
 <table class="table table-bordered table-responsive table-striped" style="background-color:#FFFFFF" >
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.User.Affil)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
@@ -33,9 +31,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Affil)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
