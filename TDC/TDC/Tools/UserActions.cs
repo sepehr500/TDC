@@ -84,7 +84,7 @@ namespace TDC.Tools
                     
                     User change = db.Users.Find(user.Id);
                     change.incomeCheck = DateTime.Now;
-                    change.Income.Add(new Income { Amount = 2, Date = DateTime.Now, UserId = user.Id });
+                    change.Income.Add(new Income { Amount = 2, Date = DateTime.Now.AddHours(user.TimeZoneOffset), UserId = user.Id });
                     change.Message.Add(new Message{notification =  "You received $2 in daily income.", UserId = user.Id});
                     db.SaveChanges();
 
@@ -95,7 +95,7 @@ namespace TDC.Tools
                     User change = db.Users.Find(user.Id);
                     change.incomeCheck = DateTime.Now;
                     decimal getIncome = getRandIncome();
-                    change.Income.Add(new Income { Amount = getIncome, Date = DateTime.Now, UserId = user.Id });
+                    change.Income.Add(new Income { Amount = getIncome, Date = DateTime.Now.AddHours(user.TimeZoneOffset), UserId = user.Id });
                     db.SaveChanges();
                     if (getIncome == 0)
                     {

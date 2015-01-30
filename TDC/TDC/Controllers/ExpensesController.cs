@@ -54,9 +54,10 @@ namespace TDC.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = UserActions.getUser(User.Identity.GetUserId());
                 expense.cost = expense.cost * -1;
                 expense.UserID = User.Identity.GetUserId();
-                expense.Date = DateTime.Now;
+                expense.Date = DateTime.Now.AddHours(user.TimeZoneOffset);
                 db.Expenses.Add(expense);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");

@@ -96,15 +96,15 @@ namespace TDC.Controllers
             if (ModelState.IsValid)
             {
                 
-                var user = new User() { UserName = model.Email, Email = model.Email, checkIn = DateTime.Now, sex = model.sex, Affil = model.Affil, level = FormLevel, type = model.type, Zip = model.Zip, again = model.again, ParticipantOrOrgan = model.ParticipantOrOrgan, Income = new List<Income>(), incomeCheck = DateTime.Now, TimeZoneOffset = timeZoneOffset};
+                var user = new User() { UserName = model.Email, Email = model.Email, checkIn = DateTime.Now, sex = model.sex, Affil = model.Affil, level = FormLevel, type = model.type, Zip = model.Zip, again = model.again, ParticipantOrOrgan = model.ParticipantOrOrgan, Income = new List<Income>(), incomeCheck = DateTime.Now, TimeZoneOffset = timeZoneOffset * -1};
                 Income income;
                 if (user.level == 1)
                 {
-                    income = new Income() { Amount = StartAmt, Date = DateTime.Now, UserId = user.Id};
+                    income = new Income() { Amount = StartAmt, Date = DateTime.Now.AddHours(user.TimeZoneOffset), UserId = user.Id};
                 }
                 else
                 {
-                income = new Income() { Amount = 2, Date = DateTime.Now, UserId = user.Id};
+                    income = new Income() { Amount = 2, Date = DateTime.Now.AddHours(user.TimeZoneOffset), UserId = user.Id };
                 }
                  
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
@@ -588,7 +588,7 @@ namespace TDC.Controllers
         {
             var user = UserActions.getUser(User.Identity.GetUserId());
             User change = db.Users.Find(user.Id);
-            change.Income.Add(new Income { Amount = ThingAmount, Date = DateTime.Now, UserId = user.Id });
+            change.Income.Add(new Income { Amount = ThingAmount, Date = DateTime.Now.AddHours(user.TimeZoneOffset), UserId = user.Id });
             db.SaveChanges();
             return RedirectToAction("Index", "Home"); 
             
@@ -600,7 +600,7 @@ namespace TDC.Controllers
         }
         [Authorize(Users = "sepehr411@gmail.com")]
         [HttpPost]
-        public ActionResult ResetGame()
+        public ActionResult ResetGame(int thing)
         {
 
             return RedirectToAction("Index", "Home"); 

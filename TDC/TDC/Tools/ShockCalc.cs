@@ -55,7 +55,7 @@ namespace TDC.Tools
                 
                 
                 ShockLU randShock = getRandShock(1);
-                ShockUser newShock = new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = id };
+                ShockUser newShock = new ShockUser { Date = DateTime.Now.AddHours(user.TimeZoneOffset), ShockLUId = randShock.ID, UserId = id };
                 db.ShockUser.Add(newShock);
                 db.Message.Add(new Message { notification = getIndString(randShock), UserId = user.Id });
                 
@@ -85,7 +85,7 @@ namespace TDC.Tools
                         if (item.Affil.ToLower() == team.ToLower())
                         {
 
-                            db.ShockUser.Add(new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = item.Id });
+                            db.ShockUser.Add(new ShockUser { Date = DateTime.Now.AddHours(item.TimeZoneOffset), ShockLUId = randShock.ID, UserId = item.Id });
 
                         }
 
@@ -112,7 +112,7 @@ namespace TDC.Tools
                     if (item.level != 1)
                     {
 
-                        db.ShockUser.Add(new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = item.Id });
+                        db.ShockUser.Add(new ShockUser { Date = DateTime.Now.AddHours(item.TimeZoneOffset), ShockLUId = randShock.ID, UserId = item.Id });
                         db.Message.Add(new Message { notification = getGlobalString(randShock), UserId = item.Id });
 
                     }
