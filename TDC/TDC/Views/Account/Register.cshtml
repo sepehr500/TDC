@@ -10,6 +10,18 @@
     @Html.AntiForgeryToken()
     <h4>Create a new account.</h4>
     <hr />
+    @Html.TextArea("TimeZoneOffset", new { @class = "hidden", id = "timezone" })
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+    <script>
+        $( document ).ready( function() {
+            var timezone_element = document.getElementById('timezone');
+            var date = new Date();
+            timezone_element.value = date.getTimezoneOffset() / 60;
+            
+        } )
+</script>
+
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
