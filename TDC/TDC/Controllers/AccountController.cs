@@ -600,9 +600,32 @@ namespace TDC.Controllers
         }
         [Authorize(Users = "sepehr411@gmail.com")]
         [HttpPost]
-        public ActionResult ResetGame(int thing)
+        public ActionResult ResetGame(int? thing)
         {
+            var user = UserActions.getUser(User.Identity.GetUserId());
+            User change = db.Users.Find(user.Id);
 
+            var Exlist = user.Expense.ToList();
+            var Shocklist = user.ShockUser.ToList();
+            var Inclist = user.Income.ToList();
+            foreach (var item in db.Expenses.ToList())
+            {
+                Expense delete = db.Expenses.Find(item.ID);
+                db.Expenses.Remove(delete);
+                db.SaveChanges();
+            }
+            foreach (var item in db.ShockUser.ToList())
+            {
+                ShockUser delete = db.ShockUser.Find(item.ID);
+                db.ShockUser.Remove(delete);
+                db.SaveChanges();
+            }
+            foreach (var item in db.Incomes.ToList())
+            {
+                Income delete = db.Incomes.Find(item.ID);
+                db.Incomes.Remove(delete);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index", "Home"); 
         }
 
