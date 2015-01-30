@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
 using TDC.Models;
+using TDC.Tools;
 
 namespace TDC.Controllers
 {
@@ -88,10 +89,10 @@ namespace TDC.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model, int FormLevel)
+        public async Task<ActionResult> Register(RegisterViewModel model, int FormLevel , int DaysPlayed)
         {
-            
-            
+
+            decimal StartAmt = DaysPlayed * 2;
             if (ModelState.IsValid)
             {
                 
@@ -99,7 +100,7 @@ namespace TDC.Controllers
                 Income income;
                 if (user.level == 1)
                 {
-                    income = new Income() { Amount = 10, Date = DateTime.Now, UserId = user.Id};
+                    income = new Income() { Amount = StartAmt, Date = DateTime.Now, UserId = user.Id};
                 }
                 else
                 {
@@ -547,6 +548,52 @@ namespace TDC.Controllers
             }
         }
 
+        public ActionResult ChangeDifficulty()
+        {
+            var user = UserActions.getUser(User.Identity.GetUserId());
+            var difficulty = "";
+            switch (user.level)
+	        {
+                case 1:
+                    difficulty = "Begginer";
+                    break;
+                case 2:
+                    difficulty = "Intermediate";
+                    break;
+                case 3:
+                    difficulty = "Advanced";
+                    break;
+	        }
+            ViewBag.DifficultyLevel = difficulty; 
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ChangeDifficulty(int FormLevel)
+        {
+
+            var user = UserActions.getUser(User.Identity.GetUserId());
+            User change = db.Users.Find(user.Id);
+            change.level = FormLevel;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
+        public ActionResult AdjustCash()
+        {
+            var user = UserActions.getUser(User.Identity.GetUserId());
+            ViewBag.Balance = user.getBalance();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AdjustCash(decimal ThingAmount)
+        {
+            var user = UserActions.getUser(User.Identity.GetUserId());
+            User change = db.Users.Find(user.Id);
+            change.Income.Add(new Income { Amount = ThingAmount, Date = DateTime.Now, UserId = user.Id });
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home"); 
+            
+        }
+
         private class ChallengeResult : HttpUnauthorizedResult
         {
             public ChallengeResult(string provider, string redirectUri) : this(provider, redirectUri, null)
@@ -575,5 +622,6 @@ namespace TDC.Controllers
             }
         }
         #endregion
+
     }
 }

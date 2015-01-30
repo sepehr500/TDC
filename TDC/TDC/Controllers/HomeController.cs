@@ -24,6 +24,7 @@ namespace TDC.Controllers
             {
 
                 var user = UserActions.getUser(User.Identity.GetUserId());
+                
                // var shock = ShockCalc.doIndShock(user.Id);
                 ShockCalc.eventChecker(user);
                 ViewBag.message = UserActions.messageParser(user);

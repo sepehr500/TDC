@@ -270,6 +270,8 @@
     <Content Include="Views\Home\Stats.cshtml" />
     <Content Include="Views\Home\CreateReflection.cshtml" />
     <Content Include="Views\Home\ReflectionView.cshtml" />
+    <Content Include="Views\Account\ChangeDifficulty.cshtml" />
+    <Content Include="Views\Account\AdjustCash.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
