@@ -593,6 +593,18 @@ namespace TDC.Controllers
             return RedirectToAction("Index", "Home"); 
             
         }
+        [Authorize(Users = "sepehr411@gmail.com")]
+        public ActionResult ResetGame()
+        {
+            return View();
+        }
+        [Authorize(Users = "sepehr411@gmail.com")]
+        [HttpPost]
+        public ActionResult ResetGame()
+        {
+
+            return RedirectToAction("Index", "Home"); 
+        }
 
         private class ChallengeResult : HttpUnauthorizedResult
         {
