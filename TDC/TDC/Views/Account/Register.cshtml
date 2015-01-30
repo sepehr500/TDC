@@ -106,7 +106,15 @@
 
 
       }, new { @class = "form-control" })*@
-             @Html.RadioButton("FormLevel", 1, true)  Beginner - $10 up front, but no more income. No Shocks <br />
+            @Html.RadioButton("FormLevel", 1, true)  Beginner - $2 for each day up front, but no more income. No Shocks. Select number of days you want to play:  @Html.DropDownList("DaysPlayed", new List<SelectListItem>
+      {
+          new SelectListItem {Text = "1", Value = "1"},
+          new SelectListItem {Text = "2", Value = "2"},
+          new SelectListItem {Text = "3", Value = "3"},
+          new SelectListItem {Text = "4", Value = "4"},
+          new SelectListItem {Text = "5", Value = "5"}
+
+      }, new { }) <br />
              @Html.RadioButton("FormLevel", 2, false)  Intermediate - $2 a day <br />
              @Html.RadioButton("FormLevel", 3, false)  Advanced - Variable income each day <br />
         </div>

@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "AdjustCash";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Adjust Balance</h2>
+
+<h3>Current balance is @ViewBag.Balance </h3>
+
+@using (Html.BeginForm("AdjustCash", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <h5>Enter the amount you would like to add. Input a negative to subtract.(Will appear in Log as Income)</h5> <input type="text" name="ThingAmount">
+    <div class="form-group">
+        <div class=" col-md-10">
+            <input type="submit" class="btn btn-default" value="Change Balance" />
+        </div>
+    </div>
+}
