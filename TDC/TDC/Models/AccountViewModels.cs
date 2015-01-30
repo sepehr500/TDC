@@ -98,8 +98,6 @@ namespace TDC.Models
         //Organization user is affiliated with
         [Display(Name = "Enter group affiliation")]
         public string Affil { get; set; }
-
-        public int TimeZoneOffset { get; set; }
     }
 
     public class ResetPasswordViewModel

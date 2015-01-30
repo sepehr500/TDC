@@ -89,14 +89,14 @@ namespace TDC.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model, int FormLevel , int DaysPlayed, int timeZoneOffset)
+        public async Task<ActionResult> Register(RegisterViewModel model, int FormLevel , int DaysPlayed)
         {
 
             decimal StartAmt = DaysPlayed * 2;
             if (ModelState.IsValid)
             {
                 
-                var user = new User() { UserName = model.Email, Email = model.Email, checkIn = DateTime.Now, sex = model.sex, Affil = model.Affil, level = FormLevel, type = model.type, Zip = model.Zip, again = model.again, ParticipantOrOrgan = model.ParticipantOrOrgan, Income = new List<Income>(), incomeCheck = DateTime.Now, TimeZoneOffset = timeZoneOffset};
+                var user = new User() { UserName = model.Email, Email = model.Email, checkIn = DateTime.Now, sex = model.sex, Affil = model.Affil, level = FormLevel, type = model.type, Zip = model.Zip, again = model.again, ParticipantOrOrgan = model.ParticipantOrOrgan, Income = new List<Income>(), incomeCheck = DateTime.Now};
                 Income income;
                 if (user.level == 1)
                 {

@@ -1114,7 +1114,7 @@ body {
     font-size: 13px;
     line-height: 1.846;
     color: #666666;
-    background-color: #F5E6E2;
+    background-color: #defff9;
 }
 .expense-modal{
     color:#FFFFFF
@@ -4547,7 +4547,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     }
 
 .navbar-inverse {
-    background-color: #DEDEDE;
+    background-color: #2196f3;
     border-color: transparent;
 }
 
@@ -4565,7 +4565,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     }
 
     .navbar-inverse .navbar-nav > li > a {
-        color: #A62900;
+        color: #b2dbfb;
     }
 
         .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
@@ -4930,7 +4930,7 @@ a.badge:hover, a.badge:focus {
     padding: 30px 15px;
     margin-bottom: 30px;
     color: inherit;
-    background-color: #EEEEEE;
+    background-color: #f9f9f9;
 }
 
     .jumbotron h1, .jumbotron .h1 {
@@ -5413,7 +5413,7 @@ a.list-group-item-danger {
 
 .panel {
     margin-bottom: 23px;
-    background-color: #DEDEDE;
+    background-color: #2196f3;
     border: 1px solid transparent;
     border-radius: 3px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
