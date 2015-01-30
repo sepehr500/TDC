@@ -22,7 +22,11 @@ namespace TDC.Tools
         public static void eventChecker(User user){
             if (user != null)
             {
-                doIndShock(user.Id);
+                if (user.level != 1)
+                {
+                    doIndShock(user.Id);
+                }
+                
                 doGlobalShock();
                 doCommunityShock();
                 UserActions.addDayIncome(user.Id);
@@ -53,6 +57,7 @@ namespace TDC.Tools
                 User change = db.Users.Find(user.Id);
                 change.checkIn = DateTime.Now;
                 
+                
                 ShockLU randShock = getRandShock(1);
                 ShockUser newShock = new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = id };
                 db.ShockUser.Add(newShock);
@@ -77,14 +82,21 @@ namespace TDC.Tools
                 
                 foreach (var item in db.Users)
                 {
-                    if (item.Affil.ToLower() == team.ToLower())
+                    if (item.level != 1)
                     {
 
-                        db.ShockUser.Add(new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = item.Id });
-                        
+
+                        if (item.Affil.ToLower() == team.ToLower())
+                        {
+
+                            db.ShockUser.Add(new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = item.Id });
+
+                        }
+
+                        db.Message.Add(new Message { notification = getCommunityString(item.Affil, randShock), UserId = item.Id });
                     }
-                    db.Message.Add(new Message { notification = getCommunityString(item.Affil, randShock), UserId = item.Id });
                 }
+
                 db.GlobalDate.Find(2).Date = DateTime.Now;
 
                 db.SaveChanges();
@@ -101,9 +113,13 @@ namespace TDC.Tools
                 ShockLU randShock = getRandShock(3); 
                 foreach (var item in db.Users)
                 {
-                    db.ShockUser.Add(new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = item.Id });
-                    db.Message.Add(new Message { notification = getGlobalString(randShock), UserId = item.Id });
+                    if (item.level != 1)
+                    {
 
+                        db.ShockUser.Add(new ShockUser { Date = DateTime.Now, ShockLUId = randShock.ID, UserId = item.Id });
+                        db.Message.Add(new Message { notification = getGlobalString(randShock), UserId = item.Id });
+
+                    }
                     
                 }
 
