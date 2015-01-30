@@ -22,11 +22,7 @@ namespace TDC.Tools
         public static void eventChecker(User user){
             if (user != null)
             {
-                if (user.level != 1)
-                {
-                    doIndShock(user.Id);
-                }
-                
+                doIndShock(user.Id);
                 doGlobalShock();
                 doCommunityShock();
                 UserActions.addDayIncome(user.Id);
