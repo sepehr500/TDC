@@ -74,7 +74,7 @@ namespace TDC.Tools
             var UserManager = new UserManager<User>(new UserStore<User>(ApplicationDbContext));
             var user = UserManager.FindById(id);
 
-            if (user.incomeCheck.Day < DateTime.Now.Day)
+            if (user.incomeCheck.Day < DateTime.Now.Day || user.incomeCheck.Month < DateTime.Now.Month)
             {
 
                 if ( user.level == 2)
