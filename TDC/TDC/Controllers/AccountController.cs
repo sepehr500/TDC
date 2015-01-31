@@ -632,11 +632,7 @@ namespace TDC.Controllers
                 {
                     item.Income.Add(new Income {Amount = 10 , Date = DateTime.Now.AddHours(item.TimeZoneOffset) , UserId = item.Id }); 
                 }
-                else
-                {
 
-                    item.Income.Add(new Income { Amount = 2, Date = DateTime.Now.AddHours(item.TimeZoneOffset), UserId = item.Id }); 
-                }
                 
                 db.SaveChanges();
             }
