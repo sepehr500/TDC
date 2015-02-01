@@ -11,7 +11,7 @@ namespace TDC.Models
     {
         public int ID { get; set; }
         
-        [Display(Name = "Enter name of product (eg. pasta)")]
+        [Display(Name = "Enter name of product without brand name. (eg. pasta)")]
         public string product { get; set; }
         [Display(Name = "Enter price of product")]
         public decimal cost { get; set; }
