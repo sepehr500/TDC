@@ -172,6 +172,10 @@
     <Compile Include="Migrations\201412181829481_ShockStuff.Designer.cs">
       <DependentUpon>201412181829481_ShockStuff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502010134165_Required.cs" />
+    <Compile Include="Migrations\201502010134165_Required.Designer.cs">
+      <DependentUpon>201502010134165_Required.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ExpenseModels.cs" />
@@ -283,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412181829481_ShockStuff.resx">
       <DependentUpon>201412181829481_ShockStuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502010134165_Required.resx">
+      <DependentUpon>201502010134165_Required.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

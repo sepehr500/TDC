@@ -70,6 +70,7 @@ namespace TDC.Models
         public string ConfirmPassword { get; set; }
 
         // 1 = easy 2 = intermediate  3 = advanced
+        [Required]
         [Display(Name="Select Difficulty")]
 
         public int level { get; set; }
@@ -96,6 +97,7 @@ namespace TDC.Models
         public int Zip { get; set; }
 
         //Organization user is affiliated with
+        [Required]
         [Display(Name = "Enter group affiliation")]
         public string Affil { get; set; }
 
