@@ -10,7 +10,7 @@ namespace TDC.Models
     public class Expense : IFundControl
     {
         public int ID { get; set; }
-
+        
         [Display(Name = "Enter name of product (eg. pasta)")]
         public string product { get; set; }
         [Display(Name = "Enter price of product")]

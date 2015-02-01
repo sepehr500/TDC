@@ -52,7 +52,7 @@ namespace TDC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,product,cost,UserID")] Expense expense)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && expense.cost != null && expense.product != null)
             {
                 var user = UserActions.getUser(User.Identity.GetUserId());
                 expense.cost = expense.cost * -1;
@@ -63,7 +63,7 @@ namespace TDC.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return View(expense);
+            return RedirectToAction("Index", "Home"); 
         }
 
         // GET: Expenses/Edit/5
