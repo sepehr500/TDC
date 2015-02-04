@@ -15,7 +15,6 @@ namespace TDC.Tools
         //use this to get current user
         public static User getUser(string id)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
             var ApplicationDbContext = new ApplicationDbContext();
             var UserManager = new UserManager<User>(new UserStore<User>(ApplicationDbContext));
             var user = UserManager.FindById(id);
