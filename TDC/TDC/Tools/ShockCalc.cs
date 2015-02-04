@@ -38,32 +38,34 @@ namespace TDC.Tools
         private static void doIndShock(string id)
         {
             //get user id
-            ApplicationDbContext db = new ApplicationDbContext();  
-            var user = UserActions.getUser(id);
-            var another = UserActions.getUser(id);
-            
-            
-            DateTime startDate = user.checkIn;
-            //seed will always be consistent
-            Random rnd = new Random((int)startDate.Ticks);
-            int randHours = rnd.Next(12,30);
-            DateTime checkTime = startDate.AddHours(randHours);
-            if (DateTime.Now.Ticks > checkTime.Ticks)
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                User change = db.Users.Find(user.Id);
-                change.checkIn = DateTime.Now;
-                
-                
-                ShockLU randShock = getRandShock(1);
-                ShockUser newShock = new ShockUser { Date = DateTime.Now.AddHours(user.TimeZoneOffset), ShockLUId = randShock.ID, UserId = id };
-                db.ShockUser.Add(newShock);
-                db.Message.Add(new Message { notification = getIndString(randShock), UserId = user.Id });
-                
-                db.SaveChanges();
+                var user = UserActions.getUser(id);
+                var another = UserActions.getUser(id);
+
+
+                DateTime startDate = user.checkIn;
+                //seed will always be consistent
+                Random rnd = new Random((int)startDate.Ticks);
+                int randHours = rnd.Next(12, 30);
+                DateTime checkTime = startDate.AddHours(randHours);
+                if (DateTime.Now.Ticks > checkTime.Ticks)
+                {
+                    User change = db.Users.Find(user.Id);
+                    change.checkIn = DateTime.Now;
+
+
+                    ShockLU randShock = getRandShock(1);
+                    ShockUser newShock = new ShockUser { Date = DateTime.Now.AddHours(user.TimeZoneOffset), ShockLUId = randShock.ID, UserId = id , User = null};
+                    db.ShockUser.Add(newShock);
+                    db.Message.Add(new Message { notification = getIndString(randShock), UserId = user.Id });
+
+                    db.SaveChanges();
+
+
+                }
 
             }
-
-
 
         }
         //Does a community shock to the richest team, then returns the shock and the name of the team in a tuple so it can be shown in the view. 
@@ -76,7 +78,7 @@ namespace TDC.Tools
                 string team = teamList.First().teamName;
                 ShockLU randShock = getRandShock(2);
                 
-                foreach (var item in db.Users)
+                foreach (var item in db.Users.ToList())
                 {
                     if (item.level != 1)
                     {

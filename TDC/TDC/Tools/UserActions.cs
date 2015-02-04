@@ -69,70 +69,78 @@ namespace TDC.Tools
         // Check if a day has passed and add income if it has. If null is returned that means that a day has not passed. 
         public static void addDayIncome(string id)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            var ApplicationDbContext = new ApplicationDbContext();
-            var UserManager = new UserManager<User>(new UserStore<User>(ApplicationDbContext));
-            var user = UserManager.FindById(id);
-
-            if (user.incomeCheck.AddHours(user.TimeZoneOffset).Day < DateTime.Now.AddHours(user.TimeZoneOffset).Day || user.incomeCheck.AddHours(user.TimeZoneOffset).Month < DateTime.Now.AddHours(user.TimeZoneOffset).Month)
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
+                var UserManager = new UserManager<User>(new UserStore<User>(db));
+                var user = UserManager.FindById(id);
 
-                if ( user.level == 2)
+                if (user.incomeCheck.AddHours(user.TimeZoneOffset).Day < DateTime.Now.AddHours(user.TimeZoneOffset).Day || user.incomeCheck.AddHours(user.TimeZoneOffset).Month < DateTime.Now.AddHours(user.TimeZoneOffset).Month)
                 {
 
-
-                    
-                    User change = db.Users.Find(user.Id);
-                    change.incomeCheck = DateTime.Now;
-                    change.Income.Add(new Income { Amount = 2, Date = DateTime.Now.AddHours(user.TimeZoneOffset), UserId = user.Id });
-                    change.Message.Add(new Message{notification =  "You received $2 in daily income.", UserId = user.Id});
-                    db.SaveChanges();
-
-                }
-                //Do advanced income
-                if(user.level == 3)
-                {
-                    User change = db.Users.Find(user.Id);
-                    change.incomeCheck = DateTime.Now;
-                    decimal getIncome = getRandIncome();
-                    change.Income.Add(new Income { Amount = getIncome, Date = DateTime.Now.AddHours(user.TimeZoneOffset), UserId = user.Id });
-                    db.SaveChanges();
-                    if (getIncome == 0)
+                    if (user.level == 2)
                     {
-                        
-                        change.Message.Add(new Message { notification = "Sorry. No income today.", UserId = user.Id });
+
+
+
+                        User change = db.Users.Find(user.Id);
+                        change.incomeCheck = DateTime.Now;
+                        change.Income.Add(new Income { Amount = 2, Date = DateTime.Now.AddHours(user.TimeZoneOffset), UserId = user.Id , User = null });
+                        change.Message.Add(new Message { notification = "You received $2 in daily income.", UserId = user.Id });
                         db.SaveChanges();
+
                     }
-                    else
+                    //Do advanced income
+                    if (user.level == 3)
                     {
-                        string deets = "You received $" + getIncome + " in daily income.";
-                        change.Message.Add(new Message { notification = deets , UserId = user.Id });
-                        db.SaveChanges(); 
+                        User change = db.Users.Find(user.Id);
+                        change.incomeCheck = DateTime.Now;
+                        decimal getIncome = getRandIncome();
+                        change.Income.Add(new Income { Amount = getIncome, Date = DateTime.Now.AddHours(user.TimeZoneOffset), UserId = user.Id , User = null });
+                        db.SaveChanges();
+                        if (getIncome == 0)
+                        {
+
+                            change.Message.Add(new Message { notification = "Sorry. No income today.", UserId = user.Id });
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+                            string deets = "You received $" + getIncome + " in daily income.";
+                            change.Message.Add(new Message { notification = deets, UserId = user.Id });
+                            db.SaveChanges();
+                        }
+
                     }
+
 
                 }
-
-
+                db.SaveChanges();
             }
-
 
         }
         private static decimal getRandIncome()
         {
             Random x = new Random((int)DateTime.Now.Ticks);
-            int num = x.Next(3);
-            switch (num)
+            int num = x.Next(11);
+            if (num <= 4)
             {
-                case 0:
-                    return 0;
-                case 1:
-                    return 3;
-                case 2:
-                    return 2;
-                case 3:
-                    return 1;
-                default:
-                    return 100;
+                return 0;
+            }
+            if (num == 5 || num == 6)
+            {
+                return 1;
+            }
+            if (num == 7 || num == 8 || num == 9)
+            {
+                return 2;
+            }
+            if (num == 10)
+            {
+                return 3;
+            }
+            else
+            {
+                return 0;
             }
 
 
