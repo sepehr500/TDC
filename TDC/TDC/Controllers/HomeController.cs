@@ -86,13 +86,18 @@ namespace TDC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateReflection([Bind(Include = "ID, Memo")]  Reflection reflection)
         {
+            if (ModelState.IsValid)
+            {
+
+
                 var user = UserActions.getUser(User.Identity.GetUserId());
                 reflection.UserId = user.Id;
                 reflection.Date = DateTime.Now;
                 db.Reflections.Add(reflection);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
-
+            }
+            return View("CreateReflection");
         }
 
 

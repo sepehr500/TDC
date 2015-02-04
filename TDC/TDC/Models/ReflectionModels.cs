@@ -15,7 +15,7 @@ namespace TDC.Models
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
-        [StringLength(140, ErrorMessage = "Message can't be longer than 140 characters.")]
+        [StringLength(140)]
         [DataType(DataType.MultilineText)]
         [Display(Name = "Reflection")]
         public string Memo { get; set; }
