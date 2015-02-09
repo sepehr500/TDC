@@ -608,6 +608,7 @@ namespace TDC.Controllers
             var Exlist = user.Expense.ToList();
             var Shocklist = user.ShockUser.ToList();
             var Inclist = user.Income.ToList();
+            var LogList = user.Message.ToList();
             foreach (var item in db.Expenses.ToList())
             {
                 Expense delete = db.Expenses.Find(item.ID);
@@ -626,6 +627,13 @@ namespace TDC.Controllers
                 db.Incomes.Remove(delete);
                 db.SaveChanges();
             }
+            foreach (var item in db.Message.ToList())
+            {
+                Message delete = db.Message.Find(item.ID);
+                db.Message.Remove(delete);
+                db.SaveChanges();
+            }
+
             foreach (var item in db.Users.ToList())
             {
                 if (item.level == 1)
