@@ -96,7 +96,7 @@ namespace TDC.Controllers
             if (ModelState.IsValid)
             {
                 
-                var user = new User() { UserName = model.Email, Email = model.Email, checkIn = DateTime.Now, sex = model.sex, Affil = model.Affil, level = FormLevel, type = model.type, Zip = model.Zip, again = model.again, ParticipantOrOrgan = model.ParticipantOrOrgan, Income = new List<Income>(), incomeCheck = DateTime.Now, TimeZoneOffset = timeZoneOffset * -1};
+                var user = new User() { UserName = model.Email, Email = model.Email, checkIn = DateTime.Now, sex = model.sex, Affil = model.Affil, level = FormLevel, type = model.type, Zip = model.Zip, again = model.again, ParticipantOrOrgan = model.ParticipantOrOrgan, Income = new List<Income>(), incomeCheck = DateTime.Now, TimeZoneOffset = timeZoneOffset * -1 , PlayDays = DaysPlayed};
                 Income income;
                 if (user.level == 1)
                 {
@@ -638,7 +638,8 @@ namespace TDC.Controllers
             {
                 if (item.level == 1)
                 {
-                    item.Income.Add(new Income {Amount = 10 , Date = DateTime.Now.AddHours(item.TimeZoneOffset) , UserId = item.Id }); 
+                    decimal PlayDays = (item.PlayDays == 0) ? 5 : (decimal)item.PlayDays;
+                    item.Income.Add(new Income {Amount = PlayDays * 2 , Date = DateTime.Now.AddHours(item.TimeZoneOffset) , UserId = item.Id }); 
                 }
 
                 

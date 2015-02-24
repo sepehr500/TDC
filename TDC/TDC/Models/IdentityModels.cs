@@ -20,6 +20,7 @@ namespace TDC.Models
 
         public DateTime incomeCheck { get; set; }
 
+        public int? PlayDays { get; set; }
         // 1 = easy 2 = intermediate  3 = advanced
         public int level { get; set; }
 

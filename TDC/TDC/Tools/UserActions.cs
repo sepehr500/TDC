@@ -121,15 +121,15 @@ namespace TDC.Tools
         {
             Random x = new Random((int)DateTime.Now.Ticks);
             int num = x.Next(11);
-            if (num <= 4)
+            if (num <= 1)
             {
                 return 0;
             }
-            if (num == 5 || num == 6)
+            if (num == 5 || num == 6 || num == 3 || num == 2)
             {
                 return 1;
             }
-            if (num == 7 || num == 8 || num == 9)
+            if (num == 7 || num == 8 || num == 9 || num == 4 )
             {
                 return 2;
             }
