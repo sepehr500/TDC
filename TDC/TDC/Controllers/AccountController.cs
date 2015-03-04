@@ -96,7 +96,7 @@ namespace TDC.Controllers
             if (ModelState.IsValid)
             {
                 
-                var user = new User() { UserName = model.Email, Email = model.Email, checkIn = DateTime.Now, sex = model.sex, Affil = model.Affil, level = FormLevel, type = model.type, Zip = model.Zip, again = model.again, ParticipantOrOrgan = model.ParticipantOrOrgan, Income = new List<Income>(), incomeCheck = DateTime.Now, TimeZoneOffset = timeZoneOffset * -1 , PlayDays = DaysPlayed};
+                var user = new User() { UserName = model.Email, Email = model.Email, checkIn = DateTime.Now, sex = model.sex, Affil = model.Affil, level = FormLevel, type = model.type, Zip = model.Zip, again = model.again, ParticipantOrOrgan = model.ParticipantOrOrgan, Income = new List<Income>(), incomeCheck = DateTime.Now, TimeZoneOffset = timeZoneOffset * -1 , PlayDays = DaysPlayed , Alert = true};
                 Income income;
                 if (user.level == 1)
                 {

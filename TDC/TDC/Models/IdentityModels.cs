@@ -26,6 +26,7 @@ namespace TDC.Models
 
         // 1 = Young Professional 2 = High School Student 3 = College Student
         public int type { get; set; }
+        public bool Alert { get; set; }
 
         // 1 = Male 2 = Female 3  = Other
         public int? sex { get; set;}

@@ -58,7 +58,9 @@ namespace TDC.Tools
                     ShockLU randShock = getRandShock(1);
                     ShockUser newShock = new ShockUser { Date = DateTime.Now.AddHours(user.TimeZoneOffset), ShockLUId = randShock.ID, UserId = id , User = null};
                     db.ShockUser.Add(newShock);
-                    db.Message.Add(new Message { notification = getIndString(randShock), UserId = user.Id });
+                    var NewMessage = new Message { notification = getIndString(randShock), UserId = user.Id }; 
+                    db.Message.Add(NewMessage);
+                    NewMessage.sendMessage();
 
                     db.SaveChanges();
 
@@ -90,8 +92,9 @@ namespace TDC.Tools
                             db.ShockUser.Add(new ShockUser { Date = DateTime.Now.AddHours(item.TimeZoneOffset), ShockLUId = randShock.ID, UserId = item.Id });
 
                         }
-
-                        db.Message.Add(new Message { notification = getCommunityString(item.Affil, randShock), UserId = item.Id });
+                        var NewMessage = new Message { notification = getCommunityString(item.Affil, randShock), UserId = item.Id }; 
+                        db.Message.Add(NewMessage);
+                        NewMessage.sendMessage();
                     }
                 }
 
@@ -115,7 +118,9 @@ namespace TDC.Tools
                     {
 
                         db.ShockUser.Add(new ShockUser { Date = DateTime.Now.AddHours(item.TimeZoneOffset), ShockLUId = randShock.ID, UserId = item.Id });
-                        db.Message.Add(new Message { notification = getGlobalString(randShock), UserId = item.Id });
+                        var NewMessage = new Message { notification = getGlobalString(randShock), UserId = item.Id }; 
+                        db.Message.Add(NewMessage);
+                        NewMessage.sendMessage();
 
                     }
                     
