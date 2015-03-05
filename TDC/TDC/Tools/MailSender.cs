@@ -11,7 +11,7 @@ namespace TDC.Tools
     {
         public static void sendMessage(this Message x)
         {
-            MailMessage message = new MailMessage("tdcapp411@gamil.com", x.User.Email, "Shock!", x.notification);
+            MailMessage message = new MailMessage("tdcapp411@gamil.com", x.User.Email, "Shock!", x.notification + "   Go to tdcapp.org to check your balance");
             message.IsBodyHtml = false;
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
