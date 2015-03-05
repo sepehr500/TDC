@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "OptOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Opt Out of Notifications</h2>
+
+@using (Html.BeginForm("OptOut", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="form-group">
+    
+        <div class=" col-md-12">
+            <h4>Would you like to opt out of notifications?</h4>
+            <select name="Opt">
+                <option value="false">Yes</option>
+                <option value="true">No</option>
+            </select>
+           
+        </div>
+        <input type="submit" class="btn btn-default" value="Submit" />
+    </div>
+}
+

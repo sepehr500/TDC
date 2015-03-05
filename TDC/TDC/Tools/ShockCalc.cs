@@ -40,33 +40,37 @@ namespace TDC.Tools
             //get user id
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                var user = UserActions.getUser(id);
-                var another = UserActions.getUser(id);
 
 
-                DateTime startDate = user.checkIn;
-                //seed will always be consistent
-                Random rnd = new Random((int)startDate.Ticks);
-                int randHours = rnd.Next(12, 30);
-                DateTime checkTime = startDate.AddHours(randHours);
-                if (DateTime.Now.Ticks > checkTime.Ticks)
+
+                foreach (var item in db.Users)
                 {
-                    User change = db.Users.Find(user.Id);
-                    change.checkIn = DateTime.Now;
+
+                    var user = item;
+                    var another = item;
+                    DateTime startDate = item.checkIn;
+                    //seed will always be consistent
+                    Random rnd = new Random((int)startDate.Ticks);
+                    int randHours = rnd.Next(12, 30);
+                    DateTime checkTime = startDate.AddHours(randHours);
+                    if (DateTime.Now.Ticks > checkTime.Ticks)
+                    {
+                        User change = item;
+                        change.checkIn = DateTime.Now;
 
 
-                    ShockLU randShock = getRandShock(1);
-                    ShockUser newShock = new ShockUser { Date = DateTime.Now.AddHours(user.TimeZoneOffset), ShockLUId = randShock.ID, UserId = id , User = null};
-                    db.ShockUser.Add(newShock);
-                    var NewMessage = new Message { notification = getIndString(randShock), UserId = user.Id }; 
-                    db.Message.Add(NewMessage);
-                    NewMessage.sendMessage();
-
-                    db.SaveChanges();
+                        ShockLU randShock = getRandShock(1);
+                        ShockUser newShock = new ShockUser { Date = DateTime.Now.AddHours(item.TimeZoneOffset), ShockLUId = randShock.ID, UserId = id, User = null };
+                        db.ShockUser.Add(newShock);
+                        var NewMessage = new Message { notification = getIndString(randShock), UserId = item.Id };
+                        db.Message.Add(NewMessage);
+                        NewMessage.sendMessage();
 
 
+
+                    }
                 }
-
+                        db.SaveChanges();
             }
 
         }

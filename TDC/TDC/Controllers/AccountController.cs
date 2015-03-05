@@ -547,6 +547,23 @@ namespace TDC.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+        public ActionResult OptOut()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult OptOut(string Opt)
+        {
+            var user = UserActions.getUser(User.Identity.GetUserId());
+            bool select = false;
+            if (Opt == "false")
+            {
+                select = true;
+            }
+            user.Alert = select;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
 
         public ActionResult ChangeDifficulty()
         {
