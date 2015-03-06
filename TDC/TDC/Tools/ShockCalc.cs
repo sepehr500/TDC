@@ -60,7 +60,7 @@ namespace TDC.Tools
 
 
                         ShockLU randShock = getRandShock(1);
-                        ShockUser newShock = new ShockUser { Date = DateTime.Now.AddHours(item.TimeZoneOffset), ShockLUId = randShock.ID, UserId = id, User = null };
+                        ShockUser newShock = new ShockUser { Date = DateTime.Now.AddHours(item.TimeZoneOffset), ShockLUId = randShock.ID, UserId = item.Id, User = null };
                         db.ShockUser.Add(newShock);
                         var NewMessage = new Message { notification = getIndString(randShock), UserId = item.Id };
                         db.Message.Add(NewMessage);
