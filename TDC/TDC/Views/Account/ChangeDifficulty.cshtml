@@ -1,36 +1,70 @@
 ﻿@model TDC.Models.RegisterViewModel
 @{
-    ViewBag.Title = "ChangeDifficulty";
+    ViewBag.Title = "Change Difficulty";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Change Difficulty</h2>
-
-<h3>Your current difficulty is @ViewBag.DifficultyLevel </h3>
-
-
-@using (Html.BeginForm("ChangeDifficulty", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.level, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @*@Html.DropDownListFor(m => m.level, new List<SelectListItem>
-                {
-                    new SelectListItem {Text = "Beginner", Value = "1"},
-                    new SelectListItem {Text = "Intermediate", Value = "2"},
-                    new SelectListItem {Text = "Advanced", Value = "3"}
-
-
-                }, new { @class = "form-control" })*@
-            @Html.RadioButton("FormLevel", 1, true)  Beginner - $2 for each day up front, but no more income. No Shocks. <br />
-            @Html.RadioButton("FormLevel", 2, false)  Intermediate - $2 a day <br />
-            @Html.RadioButton("FormLevel", 3, false)  Advanced - Variable income each day <br />
+<div class="row">
+    <div class="col-xs-8 col-xs-push-2">
+        <div class="panel box-shadows-rock" style="padding: 10px 10px 10px 10px">
+            <h2 class="text-center" style="color:#A62900; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">@ViewBag.Title</h2>
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Change Difficulty" />
-        </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel box-shadows-rock" style="padding: 10px 10px 10px 10px">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="text-center full-width">Your current difficulty is @ViewBag.DifficultyLevel </h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm("ChangeDifficulty", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    @Html.LabelFor(m => m.level, new { @class = "control-label  text-center full-width" })
+                                </div>
+                                <div class="col-sm-10">
+                                    @*@Html.DropDownListFor(m => m.level, new List<SelectListItem>
+                                        {
+                                            new SelectListItem {Text = "Beginner", Value = "1"},
+                                            new SelectListItem {Text = "Intermediate", Value = "2"},
+                                            new SelectListItem {Text = "Advanced", Value = "3"}
+
+
+                                        }, new { @class = "form-control" })*@
+                                    <div class="row">
+                                        <div class="col-xs-offset-1">
+                                            @Html.RadioButton("FormLevel", 1, true)  Beginner - $2 for each day up front, but no more income. No Shocks. <br />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-offset-1">
+                                            @Html.RadioButton("FormLevel", 2, false)  Intermediate - $2 a day <br />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-offset-1">
+                                            @Html.RadioButton("FormLevel", 3, false)  Advanced - Variable income each day <br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-offset-1 col-xs-10">
+                                    <input type="submit" class="btn btn-default full-width" value="Change Difficulty" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                 </div>
+             </div>
+         </div>
     </div>
-}
+</div>

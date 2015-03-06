@@ -11,27 +11,40 @@
         </div>
     </div>
 </div>
-@Html.ActionLink("Adjust Balance", "AdjustCash", null, new { @class = "btn btn-default" })
-@Html.ActionLink("Change Difficulty", "ChangeDifficulty", null, new { @class = "btn btn-default" })
-@Html.ActionLink("Opt Out of Notifications", "OptOut", null, new { @class = "btn btn-default" })
-
-<p class="text-success">@ViewBag.StatusMessage</p>
 <div class="row">
-    
-    @if (ViewBag.HasLocalPassword)
-    {
-        @Html.Partial("_ChangePasswordPartial")
-    }
-    else
-    {
-        @Html.Partial("_SetPasswordPartial")
-    }
+    <div class="col-lg-12">
+        <div class="panel box-shadows-rock" style="padding: 10px 10px 10px 10px">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    @Html.ActionLink("Adjust Balance", "AdjustCash", null, new { @class = "btn btn-default text-center full-width" })
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    @Html.ActionLink("Change Difficulty", "ChangeDifficulty", null, new { @class = "btn btn-default text-center full-width" })
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    @Html.ActionLink("Opt Out of Notifications", "OptOut", null, new { @class = "btn btn-default text-center full-width" })
+                </div>
+            </div>
+            <p class="text-success">@ViewBag.StatusMessage</p>
+            
 
-    @*<section id="externalLogins">
-        @Html.Action("RemoveAccountList")
-        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
-    </section>*@
-    
+            @if (ViewBag.HasLocalPassword)
+            {
+                @Html.Partial("_ChangePasswordPartial")
+            }
+            else
+            {
+                @Html.Partial("_SetPasswordPartial")
+            }
+
+                @*<section id="externalLogins">
+                        @Html.Action("RemoveAccountList")
+                        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
+                    </section>*@
+
+            
+        </div>
+    </div>
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
