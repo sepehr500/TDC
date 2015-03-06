@@ -25,3 +25,11 @@ textarea,
 .hidden { 
     visibility : hidden;
 }
+.full-width {
+    display:block;
+    width:100%;
+    max-width: none;
+}
+.red-text{
+    color: #A62900;
+}

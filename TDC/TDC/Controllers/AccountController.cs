@@ -572,7 +572,7 @@ namespace TDC.Controllers
             switch (user.level)
 	        {
                 case 1:
-                    difficulty = "Begginer";
+                    difficulty = "Beginner";
                     break;
                 case 2:
                     difficulty = "Intermediate";

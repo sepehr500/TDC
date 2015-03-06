@@ -1,18 +1,51 @@
 ﻿@{
-    ViewBag.Title = "AdjustCash";
+    ViewBag.Title = "Adjust Balance";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Adjust Balance</h2>
-
-<h3>Current balance is @ViewBag.Balance </h3>
-
-@using (Html.BeginForm("AdjustCash", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    <h5>Enter the amount you would like to add. Input a negative to subtract.(Will appear in Log as Income)</h5> <input type="text" name="ThingAmount">
-    <div class="form-group">
-        <div class=" col-md-10">
-            <input type="submit" class="btn btn-default" value="Change Balance" />
+<div class="row">
+    <div class="col-xs-8 col-xs-push-2">
+        <div class="panel box-shadows-rock" style="padding: 10px 10px 10px 10px">
+            <h2 class="text-center" style="color:#A62900; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">@ViewBag.Title</h2>
         </div>
     </div>
-}
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel box-shadows-rock" style="padding: 10px 10px 10px 10px">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="text-center full-width">Current Balance: $@ViewBag.Balance </h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm("AdjustCash", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5 class="full-width text-center">Enter the amount you would like to add. Input a negative to subtract.(Will appear in Log as Income)</h5> 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-10 col-xs-offset-1">
+                                <input class="full-width" type="text" name="ThingAmount">
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-xs-8 col-xs-offset-2">
+                                            <input type="submit" class="btn btn-default full-width" value="Change Balance" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
