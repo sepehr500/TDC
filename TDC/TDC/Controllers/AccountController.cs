@@ -96,7 +96,7 @@ namespace TDC.Controllers
             if (ModelState.IsValid)
             {
                 
-                var user = new User() { UserName = model.Email, Email = model.Email, checkIn = DateTime.Now, sex = model.sex, Affil = model.Affil, level = FormLevel, type = model.type, Zip = model.Zip, again = model.again, ParticipantOrOrgan = model.ParticipantOrOrgan, Income = new List<Income>(), incomeCheck = DateTime.Now, TimeZoneOffset = timeZoneOffset * -1 , PlayDays = DaysPlayed , Alert = true};
+                var user = new User() { UserName = model.Email, Email = model.Email, checkIn = DateTime.Now, sex = 0, Affil = model.Affil, level = FormLevel, type = model.type, Zip = model.Zip, again = model.again, ParticipantOrOrgan = model.ParticipantOrOrgan, Income = new List<Income>(), incomeCheck = DateTime.Now, TimeZoneOffset = timeZoneOffset * -1 , PlayDays = DaysPlayed , Alert = true};
                 Income income;
                 if (user.level == 1)
                 {
@@ -110,6 +110,8 @@ namespace TDC.Controllers
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    db.Message.Add(new Message { notification = "Thanks for Signing Up! You'll start getting income and/or shocks immediately. Don't worry, we will reset everything on April 6. In the meantime, poke around and give us your feedback. See you April 6!" ,
+                     UserId = user.Id});
                     db.Incomes.Add(income);
                     await db.SaveChangesAsync();
                     await SignInAsync(user, isPersistent: false);

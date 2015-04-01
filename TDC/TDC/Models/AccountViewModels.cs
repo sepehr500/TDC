@@ -80,7 +80,7 @@ namespace TDC.Models
         public int type { get; set; }
 
         // 1 = Male 2 = Female 3  = Other
-        [Display(Name = "What is your gender?")]
+        [Display(Name = "I identify my gender as...")]
         public int? sex { get; set; }
 
         //True = participated last year, False = did not

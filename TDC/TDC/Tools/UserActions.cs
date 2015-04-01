@@ -28,7 +28,7 @@ namespace TDC.Tools
             ApplicationDbContext db = new ApplicationDbContext();
             //only converts all to lowercase
             string teamName = user.Affil.ToLower();
-            var list = db.Users.Where(x => x.Affil.ToLower().Contains(teamName));
+            var list = db.Users.Where(x => x.Affil.ToLower().Equals(teamName));
             return list.Count();
 
 

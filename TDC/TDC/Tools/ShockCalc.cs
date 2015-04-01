@@ -173,7 +173,7 @@ namespace TDC.Tools
         }
         private static string getGlobalString(ShockLU deets)
         {
-            return "GLOBAL SHOCK: Everybody was " + deets.Description;
+            return "GLOBAL SHOCK: "+ deets.Description;
 
         }
 
