@@ -40,6 +40,31 @@ namespace TDC.Controllers
           
         }
 
+        public ActionResult RemitanceForm()
+        {
+
+
+            return View();
+
+        }
+        [HttpPost]
+        public ActionResult RemitanceForm(string recipiant, decimal amt)
+        {
+            var user = UserActions.getUser(User.Identity.GetUserId());
+            var recpiantObject = db.Users.Where(x => x.Email == recipiant).ToList();
+            if (amt < user.getBalance() && recpiantObject.Count > 0 && amt > 0)
+            {
+                UserActions.sendRemit(user, recpiantObject.First() , amt);
+
+
+            }
+
+
+
+
+            return RedirectToAction("Index");
+        }
+
         public ActionResult About()
         {
             
@@ -65,7 +90,12 @@ namespace TDC.Controllers
             ViewBag.teamMoney =  TeamStats.getTeamMoney().OrderByDescending(x => x.amt);
             ViewBag.teamTotal = TeamStats.getPopItem().OrderByDescending(x => x.amt);
             ViewBag.numOnTeams = TeamStats.getTotalTeam().OrderByDescending(x => x.amt);
-            return View();
+            //ViewBag.RichPlayer = db.Users.Where(x => x.Expense.Count > 0).Select(x => new {Email = x.Email , TotalSum = x.Income.Sum(y => y.Amount) - x.Expense.Sum(z => z.cost) }).OrderByDescending(d => d.TotalSum).Take(10).ToList();
+            var people = db.Users.Where(x => x.Expense.Count > 0).ToList();
+            people = people.OrderByDescending(x => x.getBalance()).Take(10).ToList();
+            var ppeople= db.Users.Where(x => x.Expense.Count > 0).ToList();
+            ViewBag.poor = ppeople.OrderBy(x => x.getBalance()).Take(10).ToList();
+            return View(people);
         }
 
         public ActionResult ReflectionView() {

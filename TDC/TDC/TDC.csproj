@@ -284,6 +284,7 @@
     <Content Include="Views\Account\AdjustCash.cshtml" />
     <Content Include="Views\Account\ChangeDifficulty.cshtml" />
     <Content Include="Views\Account\OptOut.cshtml" />
+    <Content Include="Views\Home\RemitanceForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

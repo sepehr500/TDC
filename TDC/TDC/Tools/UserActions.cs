@@ -21,6 +21,34 @@ namespace TDC.Tools
             return user;
         }
 
+        //Sends Remitance
+        public static void sendRemit(User sender , User recipiant , decimal amt)
+        {
+            using ( var ApplicationDbContext = new ApplicationDbContext())
+            {
+                ApplicationDbContext.Expenses.Add(new Expense()
+                {
+                    cost = amt * -1,
+                    Date = DateTime.Now.AddHours(sender.TimeZoneOffset),
+                    UserID = sender.Id,
+                    product = "Remitance"
+                });
+                ApplicationDbContext.Incomes.Add(new Income()
+                {
+                    Amount = amt,
+                    Date = DateTime.Now.AddHours(recipiant.TimeZoneOffset),
+                    UserId = recipiant.Id
+                });
+                ApplicationDbContext.Message.Add(new Message()
+                {
+                    notification = "You recieved " + amt + " from " + sender.Email, UserId = recipiant.Id
+                });
+                ApplicationDbContext.SaveChanges();
+
+            }
+            
+            
+        }
 
         //Returns number of people on individual team
         public static int teamCount(User user)
@@ -121,26 +149,29 @@ namespace TDC.Tools
         {
             Random x = new Random((int)DateTime.Now.Ticks);
             int num = x.Next(11);
-            if (num <= 1)
+            if (num < 1)
             {
                 return 0;
             }
-            if (num == 5 || num == 6 || num == 3 || num == 2)
+            switch (num)
             {
-                return 1;
+                case 5:
+                case 6:
+                case 3:
+                case 2:
+                    return 1;
+                case 7:
+                case 8:
+                case 9:
+                case 4:
+                    return 2;
+                case 10:
+                case 1:
+                    return 3;
+                default:
+                    return 0;
             }
-            if (num == 7 || num == 8 || num == 9 || num == 4 )
-            {
-                return 2;
-            }
-            if (num == 10)
-            {
-                return 3;
-            }
-            else
-            {
-                return 0;
-            }
+            
 
 
         }

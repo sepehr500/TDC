@@ -46,25 +46,28 @@ namespace TDC.Tools
                 foreach (var item in db.Users)
                 {
 
-                    var user = item;
-                    var another = item;
-                    DateTime startDate = item.checkIn;
-                    //seed will always be consistent
-                    Random rnd = new Random((int)startDate.Ticks);
-                    int randHours = rnd.Next(12, 30);
-                    DateTime checkTime = startDate.AddHours(randHours);
-                    if (DateTime.Now.Ticks > checkTime.Ticks)
+                    if (item.level != 1)
                     {
-                        User change = item;
-                        change.checkIn = DateTime.Now;
+                        var user = item;
+                        var another = item;
+                        DateTime startDate = item.checkIn;
+                        //seed will always be consistent
+                        Random rnd = new Random((int)startDate.Ticks);
+                        int randHours = rnd.Next(12, 24);
+                        DateTime checkTime = startDate.AddHours(randHours);
+                        if (DateTime.Now.Ticks > checkTime.Ticks)
+                        {
+                            User change = item;
+                            change.checkIn = DateTime.Now;
 
 
-                        ShockLU randShock = getRandShock(1);
-                        ShockUser newShock = new ShockUser { Date = DateTime.Now.AddHours(item.TimeZoneOffset), ShockLUId = randShock.ID, UserId = item.Id, User = null };
-                        db.ShockUser.Add(newShock);
-                        var NewMessage = new Message { notification = getIndString(randShock), UserId = item.Id };
-                        db.Message.Add(NewMessage);
-                        NewMessage.sendMessage();
+                            ShockLU randShock = getRandShock(1);
+                            ShockUser newShock = new ShockUser { Date = DateTime.Now.AddHours(item.TimeZoneOffset), ShockLUId = randShock.ID, UserId = item.Id, User = null };
+                            db.ShockUser.Add(newShock);
+                            var NewMessage = new Message { notification = getIndString(randShock), UserId = item.Id };
+                            db.Message.Add(NewMessage);
+                            NewMessage.sendMessage(); 
+                        }
 
 
 
@@ -77,34 +80,38 @@ namespace TDC.Tools
         //Does a community shock to the richest team, then returns the shock and the name of the team in a tuple so it can be shown in the view. 
         private static void doCommunityShock() {
             
-            ApplicationDbContext db = new ApplicationDbContext();
-            if (db.GlobalDate.Find(2).Date.AddHours(42) < DateTime.Now)
+            
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                var teamList = TeamStats.getTeamMoney().OrderByDescending(x => x.amt);
-                string team = teamList.First().teamName;
-                ShockLU randShock = getRandShock(2);
-                
-                foreach (var item in db.Users.ToList())
+                if (db.GlobalDate.Find(2).Date.AddHours(42) < DateTime.Now)
                 {
-                    if (item.level != 1)
+                    //var teamList = TeamStats.getTeamMoney().OrderByDescending(x => x.amt);
+                    //string team = teamList.First().teamName;
+                    string team = db.Users.First().Affil;
+                    ShockLU randShock = getRandShock(2);
+
+                    foreach (var item in db.Users.ToList())
                     {
-
-
-                        if (item.Affil.ToLower() == team.ToLower())
+                        if (item.level != 1)
                         {
 
-                            db.ShockUser.Add(new ShockUser { Date = DateTime.Now.AddHours(item.TimeZoneOffset), ShockLUId = randShock.ID, UserId = item.Id });
 
+                            if (item.Affil.ToLower() == team.ToLower())
+                            {
+
+                                db.ShockUser.Add(new ShockUser { Date = DateTime.Now.AddHours(item.TimeZoneOffset), ShockLUId = randShock.ID, UserId = item.Id });
+
+                            }
+                            var NewMessage = new Message { notification = getCommunityString(team, randShock), UserId = item.Id };
+                            db.Message.Add(NewMessage);
+                            NewMessage.sendMessage();
                         }
-                        var NewMessage = new Message { notification = getCommunityString(item.Affil, randShock), UserId = item.Id }; 
-                        db.Message.Add(NewMessage);
-                        NewMessage.sendMessage();
                     }
-                }
 
-                db.GlobalDate.Find(2).Date = DateTime.Now;
+                    db.GlobalDate.Find(2).Date = DateTime.Now;
 
-                db.SaveChanges();
+                    db.SaveChanges();
+                } 
             }
         
         }
@@ -112,30 +119,32 @@ namespace TDC.Tools
         //Dont think I will implement this. There are only 2 or 3 global shocks, so might make sense to write manually. 
         private static void doGlobalShock() 
         {
-            ApplicationDbContext db = new ApplicationDbContext();  
-            if (db.GlobalDate.First().Date.AddHours(50) < DateTime.Now)
-            {
-                ShockLU randShock = getRandShock(3); 
-                foreach (var item in db.Users)
-                {
-                    if (item.level != 1)
-                    {
 
-                        db.ShockUser.Add(new ShockUser { Date = DateTime.Now.AddHours(item.TimeZoneOffset), ShockLUId = randShock.ID, UserId = item.Id });
-                        var NewMessage = new Message { notification = getGlobalString(randShock), UserId = item.Id }; 
-                        db.Message.Add(NewMessage);
-                        NewMessage.sendMessage();
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                if (db.GlobalDate.First().Date.AddHours(28) < DateTime.Now)
+                {
+                    ShockLU randShock = getRandShock(3);
+                    foreach (var item in db.Users)
+                    {
+                        if (item.level != 1)
+                        {
+
+                            db.ShockUser.Add(new ShockUser { Date = DateTime.Now.AddHours(item.TimeZoneOffset), ShockLUId = randShock.ID, UserId = item.Id });
+                            var NewMessage = new Message { notification = getGlobalString(randShock), UserId = item.Id };
+                            db.Message.Add(NewMessage);
+                            NewMessage.sendMessage();
+
+                        }
 
                     }
-                    
+
+                    db.GlobalDate.First().Date = DateTime.Now;
+                    db.SaveChanges();
+
                 }
 
-                db.GlobalDate.First().Date = DateTime.Now;
-                db.SaveChanges();
-
             }
-
-        
         
         
         

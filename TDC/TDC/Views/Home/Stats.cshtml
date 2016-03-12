@@ -2,6 +2,7 @@
     ViewBag.Title = "Stats";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model List<TDC.Models.User>
 
 <div class="row">
     <div class="col-xs-8 col-xs-push-2">
@@ -126,6 +127,84 @@
                 </td>
                 <td>
                     @x.amt
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<div class="panel box-shadows-rock" style="padding: 10px 10px 10px 10px">
+    <h3 class="text-center" style="color:#A62900; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Most Fortunate</h3>
+    <hr />
+    <table class="table table-bordered table-responsive table-striped" style="background-color:#FFFFFF">
+        <tr>
+            <th width="100px">
+                Number
+            </th>
+            <th width="100px">
+                Player
+            </th>
+            <th width="100px">
+                Total
+            </th>
+        </tr>
+
+        @{ i = 0;}
+        @foreach (var x in Model)
+        {
+            //string classType = "";
+            //if (String.Equals(x.getType(), "Income")) { classType = "success"; }
+            //else if (String.Equals(x.getType(), "Expense")) { classType = "danger"; }
+            //else if (String.Equals(x.getType(), "Expense")) { classType = "danger"; }
+            //var sum = x.Income.Sum(y => y.Amount) + x.Expense.Sum(y => y.cost);
+            <tr class="default">
+                <td>
+                    @{i = i + 1; }
+                    @i
+                </td>
+                <td>
+                    @x.Email
+                </td>
+                <td>
+                    @x.getBalance()
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<div class="panel box-shadows-rock" style="padding: 10px 10px 10px 10px">
+    <h3 class="text-center" style="color:#A62900; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Least Fortunate</h3>
+    <hr />
+    <table class="table table-bordered table-responsive table-striped" style="background-color:#FFFFFF">
+        <tr>
+            <th width="100px">
+                Number
+            </th>
+            <th width="100px">
+                Player
+            </th>
+            <th width="100px">
+                Total
+            </th>
+        </tr>
+
+        @{ i = 0;}
+        @foreach (var x in ViewBag.poor)
+        {
+            //string classType = "";
+            //if (String.Equals(x.getType(), "Income")) { classType = "success"; }
+            //else if (String.Equals(x.getType(), "Expense")) { classType = "danger"; }
+            //else if (String.Equals(x.getType(), "Expense")) { classType = "danger"; }
+            //var sum = x.Income.Sum(y => y.Amount) + x.Expense.Sum(y => y.cost);
+            <tr class="default">
+                <td>
+                    @{i = i + 1; }
+                    @i
+                </td>
+                <td>
+                    @x.Email
+                </td>
+                <td>
+                    @x.getBalance()
                 </td>
             </tr>
         }

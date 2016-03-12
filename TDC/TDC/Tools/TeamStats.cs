@@ -64,7 +64,7 @@ namespace TDC.Tools
                     sum = 0;
                 }
             }
-            return list;
+            return list.Take(10).ToList();
         }
 
         //list of total number of people on each team
